@@ -7,11 +7,12 @@ import {
 import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import './App.css';
+import './css/App.css';
 
-import Home from './Home';
-import Actors from './Actors'
-import Films from './Films'
+import Home from './components/Home';
+import Actors from './components/Actors'
+import MovieList from './components/MovieList'
+import Movie from './components/Movie'
 
 import axios from 'axios'; //temporary
 
@@ -43,7 +44,9 @@ class App extends Component {
           </Toolbar>
           <Route exact path="/" component={Home} />
           <Route path="/actors" component={Actors} />
-          <Route path="/films" component={Films} />
+          <Route exact path="/films/:id/:title" component={Movie}></Route>
+          <Route exact path="/films" component={MovieList} />
+
         </div>
       </Router>
     );
