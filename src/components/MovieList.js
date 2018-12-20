@@ -30,16 +30,8 @@ class MovieList extends Component {
       searching:  event.target.value.length > 0 
     });
   }
- /* <TextField
-  id="outlined-search"
-  label="Search field"
-  type="search"
-  className={classes.textField}
-  margin="normal"
-  variant="outlined"
-/>*/
+
   render() {
-//<input type="text" onChange={this.filterMovies} placeholder="Search"></input>
     //we want to display either whole list of movies or filtered list depending on the users input
     let movies = this.state.filtered.length === 0 ? this.state.movies : this.state.filtered;
     if(this.state.filtered.length === 0 && this.state.searching === true) {
