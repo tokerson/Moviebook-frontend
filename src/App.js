@@ -29,7 +29,7 @@ class App extends Component {
       <Router>
         <div>
           <Toolbar className="toolbar">
-          <Button component={Link} to="/" variant="outlined" size="small">
+            <Button component={Link} to="/" variant="outlined" size="small">
               Home
             </Button>
             <Typography variant="title" align="center" noWrap className="title">MovieBook</Typography>
@@ -37,12 +37,12 @@ class App extends Component {
               Sign up
             </Button>
           </Toolbar>      
-            <Toolbar variant="dense">
-            <Link className="links" to="/films">Films</Link>
-            <Link className="links" to="/actors">Actors</Link>
+          <Toolbar variant="dense">
+            <Button size="small" component={Link} to="/films">films</Button>
+            <Button size="small" component={Link} to="/actors">actors</Button>
           </Toolbar>
           <Route exact path="/" component={Home} />
-          <Route path="/actors" component={Actors} />
+          <Route exact path="/actors" component={Actors} />
           <Route exact path="/films/:title" component={Movie}></Route>
           <Route exact path="/films" component={MovieList} />
 
