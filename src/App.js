@@ -24,7 +24,6 @@ class App extends Component {
       })
   }
 
-
   render() {
     return (
       <Router>
@@ -37,8 +36,8 @@ class App extends Component {
             <Button variant="outlined" size="small">
               Sign up
             </Button>
-          </Toolbar>
-          <Toolbar variant="dense">
+          </Toolbar>      
+            <Toolbar variant="dense">
             <Link className="links" to="/films">Films</Link>
             <Link className="links" to="/actors">Actors</Link>
           </Toolbar>

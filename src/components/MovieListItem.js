@@ -9,8 +9,9 @@ const MovieListItem = (props) => {
         return (
             <div>
             <NavLink to={{
-                pathname: '/films/'.concat(movie.id + '/' + movie.title)
-                }} className="list_links">
+                pathname: '/films/'.concat(movie.id + '/' + movie.title),
+                params: movie
+                }} className="list_links" >
                 <h3>{movie.id} {movie.title}</h3>
             </NavLink>
             </div> 
