@@ -24,7 +24,6 @@ class MovieList extends Component {
       return item.title.toUpperCase().indexOf(event.target.value.toUpperCase()) > -1;
     });
 
-
     this.setState({
       filtered: filtered,
       searching:  event.target.value.length > 0 
@@ -41,9 +40,8 @@ class MovieList extends Component {
     
     return (
       <div>
-          
           <input type="text" onChange={this.filterMovies} placeholder="Search"></input>
-          <MovieListItem key={movies.id} movies={movies}/>          
+          <MovieListItem movies={movies}/>          
       </div>
     );
   }

@@ -6,7 +6,7 @@ const MovieListItem = (props) => {
     const movies = props.movies.map(movie => {
         
         return (
-            <div>
+            <div key={movie.id}>
             <NavLink to={{
                 pathname: '/films/'.concat(movie.title),
                 params: movie

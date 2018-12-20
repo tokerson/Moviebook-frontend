@@ -2,71 +2,71 @@
     {
         "id" : 1,
         "title" : "Titanic",
-        "director" : "Tom Cruise"
+        "director" : "James Cameron"
     },
     {
-        "id" : "2",
+        "id" : 2,
         "title" : "Deadpool",
-        "director" : ""
+        "director" : "Tim Miller"
     },
     {
-        "id" : "3",
+        "id" : 3,
         "title" : "Avengers",
-        "director" : "Stan Lee"
+        "director" : "Joss Whedon"
     },
     {
-        "id" : "4",
+        "id" : 4,
         "title" : "Catch me if you can",
-        "director" : ""
+        "director" : "Steven Spielberg"
     },
     {
-        "id" : "5",
-        "title" : "Spider-Man Homecoming",
-        "director" : ""
+        "id" : 5,
+        "title" : "Spider-Man: Homecoming",
+        "director" : "Jon Watts"
     },
     {
-        "id" : "6",
+        "id" : 6,
         "title" : "La-La-Land",
-        "director" : ""
+        "director" : "Damien Chazelle"
     },
     {
-        "id" : "7",
-        "title" : "The Star is Born",
+        "id" : 7,
+        "title" : "A Star is Born",
         "director" : "Bradley Cooper"
     },
     {
-        "id" : "8",
-        "title" : "Hangover",
-        "director" : ""
+        "id" : 8,
+        "title" : "The Hangover",
+        "director" : "Todd Phillips"
     },
     {
-        "id" : "9",
+        "id" : 9,
         "title" : "Avatar",
-        "director" : ""
+        "director" : "James Cameron"
     },
     {
-        "id" : "10",
+        "id" : 10,
         "title" : "Rocky Balboa",
-        "director" : ""
+        "director" : "Sylvester Stallone"
     },
     {
-        "id" : "11",
-        "title" : "Papertowns",
-        "director" : ""
+        "id" : 11,
+        "title" : "Paper Towns",
+        "director" : "Jake Schreier"
     },
     {
-        "id" : "12",
+        "id" : 12,
         "title" : "Creed",
-        "director" : ""
+        "director" : "Ryan Coogler"
     },
     {
         "id" : 13,
         "title" : "Jurassic World",
-        "director" : ""
+        "director" : "Colin Trevorrow"
     },
     {
         "id" : 14,
         "title" : "Mamma mia",
-        "director" : ""
+        "director" : "Phyllida Lloyd"
     }
 ]
