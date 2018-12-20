@@ -1,19 +1,72 @@
 [
     {
-        "id" : "1",
+        "id" : 1,
         "title" : "Titanic",
         "director" : "Tom Cruise"
     },
     {
         "id" : "2",
-        "title" : "Deadpool"
+        "title" : "Deadpool",
+        "director" : ""
     },
     {
         "id" : "3",
-        "title" : "Avengers"
+        "title" : "Avengers",
+        "director" : "Stan Lee"
     },
     {
         "id" : "4",
-        "title" : "Catch me if you can"
+        "title" : "Catch me if you can",
+        "director" : ""
+    },
+    {
+        "id" : "5",
+        "title" : "Spider-Man Homecoming",
+        "director" : ""
+    },
+    {
+        "id" : "6",
+        "title" : "La-La-Land",
+        "director" : ""
+    },
+    {
+        "id" : "7",
+        "title" : "The Star is Born",
+        "director" : "Bradley Cooper"
+    },
+    {
+        "id" : "8",
+        "title" : "Hangover",
+        "director" : ""
+    },
+    {
+        "id" : "9",
+        "title" : "Avatar",
+        "director" : ""
+    },
+    {
+        "id" : "10",
+        "title" : "Rocky Balboa",
+        "director" : ""
+    },
+    {
+        "id" : "11",
+        "title" : "Papertowns",
+        "director" : ""
+    },
+    {
+        "id" : "12",
+        "title" : "Creed",
+        "director" : ""
+    },
+    {
+        "id" : 13,
+        "title" : "Jurassic World",
+        "director" : ""
+    },
+    {
+        "id" : 14,
+        "title" : "Mamma mia",
+        "director" : ""
     }
 ]
