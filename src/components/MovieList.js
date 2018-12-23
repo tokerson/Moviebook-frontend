@@ -5,6 +5,8 @@ import JSON from '../json/Movies.json';
 import MovieListItem from "./MovieListItem"
 import TextField from '@material-ui/core/TextField';
 
+import "../css/MovieList.css"
+
 class MovieList extends Component {
 
   constructor(props) {
@@ -41,7 +43,7 @@ class MovieList extends Component {
     return (
       <div>
           <TextField id="outlined-search" label="Search" margin="normal" varian="outlined" placeholder="Search" onChange={this.filterMovies}></TextField>
-          <MovieListItem movies={movies}/>          
+          <MovieListItem className="list" movies={movies}/>          
       </div>
     );
   }

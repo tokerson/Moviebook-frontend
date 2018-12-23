@@ -1,5 +1,6 @@
 .toolbar {
   border-bottom: 1px solid black;
+  font-family: 'Roboto';
 }
 
 .title {
@@ -8,11 +9,6 @@
 
 .links {
   margin-left: 10px;
-  color: black;
-  text-decoration: none;
-}
-
-.list_links {
   color: black;
   text-decoration: none;
 }

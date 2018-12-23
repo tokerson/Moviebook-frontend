@@ -1,0 +1,46 @@
+.movieListItem {
+    /* display: block; */
+    display: flex;
+    background-color: #efefef;
+    border: 1px solid lightgray;
+    border-radius: 2px;
+    margin: 10px 0 20px 0;
+    max-height: 200px;
+    color: black;
+    text-decoration: none;
+    transition: transform .2s;
+}
+
+.movieListItem:hover {
+    box-shadow: 0 0 2px 1px darkslategray;
+    transform: scale(1.02)
+}
+
+.coverage {
+    display: inline-block;
+    max-height: 190px;
+    height: auto;
+    width: auto;
+    margin-top : 5px;
+    margin-left : 5px;
+    margin-bottom : 5px;
+    border-radius : 2px;
+}
+
+.moviePreview {
+    display: flex;
+    flex-direction: column;
+    /* text-align: center; */
+    margin-left : 10px;
+    /* float: left; */
+} 
+
+#title {
+    display: inline-block;
+    /* align-self: center; */
+    /* float: left; */
+    /* margin: 20% 10px 5px 10px; */
+}
+.plainText {
+    font-weight: 400
+}

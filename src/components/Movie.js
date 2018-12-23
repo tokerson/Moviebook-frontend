@@ -14,13 +14,17 @@ class Movie extends Component {
                 })
                 this.setState({
                     title : movie[0].title,
-                    director : movie[0].director
+                    director : movie[0].director,
+                    coverURL : movie[0].coverURL,
+                    premiere : movie[0].premiere
                 });
         }
         else {
             this.setState({
                 title : this.props.location.params.title,
-                director : this.props.location.params.director
+                director : this.props.location.params.director,
+                coverURL : this.props.location.params.coverURL,
+                premiere : this.props.location.params.premiere
             });
         }
 
@@ -29,8 +33,10 @@ class Movie extends Component {
     render(){
     return(
         <div>
+            <img src={this.state.coverURL} alt="coverage of this movie"></img>
             <h3>Title : {this.state.title}</h3>
             <h3>Director: {this.state.director}</h3>
+            <h4>Premiere: {this.state.premiere}</h4>
         </div>
     );
     }

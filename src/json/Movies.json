@@ -2,71 +2,99 @@
     {
         "id" : 1,
         "title" : "Titanic",
-        "director" : "James Cameron"
+        "director" : "James Cameron",
+        "coverURL" : "https://ssl-gfx.filmweb.pl/po/01/87/187/7451731.3.jpg",
+        "premiere" : "1997"
     },
     {
         "id" : 2,
         "title" : "Deadpool",
-        "director" : "Tim Miller"
+        "director" : "Tim Miller",
+        "coverURL" : "https://ssl-gfx.filmweb.pl/po/46/75/514675/7716978.2.jpg",
+        "premiere" : "2016"
     },
     {
         "id" : 3,
         "title" : "Avengers",
-        "director" : "Joss Whedon"
+        "director" : "Joss Whedon",
+        "coverURL" : "https://ssl-gfx.filmweb.pl/po/15/15/371515/7611932.2.jpg",
+        "premiere" : "2012"
     },
     {
         "id" : 4,
         "title" : "Catch me if you can",
-        "director" : "Steven Spielberg"
+        "director" : "Steven Spielberg",
+        "coverURL" : "https://ssl-gfx.filmweb.pl/po/23/62/32362/6972833.2.jpg",
+        "premiere" : "2002"
     },
     {
         "id" : 5,
         "title" : "Spider-Man: Homecoming",
-        "director" : "Jon Watts"
+        "director" : "Jon Watts",
+        "coverURL" : "https://ssl-gfx.filmweb.pl/po/96/76/659676/7796301.2.jpg",
+        "premiere" : "2017"
     },
     {
         "id" : 6,
         "title" : "La-La-Land",
-        "director" : "Damien Chazelle"
+        "director" : "Damien Chazelle",
+        "coverURL" : "https://ssl-gfx.filmweb.pl/po/88/19/718819/7771442.2.jpg",
+        "premiere" : "2016"
     },
     {
         "id" : 7,
         "title" : "A Star is Born",
-        "director" : "Bradley Cooper"
+        "director" : "Bradley Cooper",
+        "coverURL" : "https://ssl-gfx.filmweb.pl/po/25/76/542576/7846831.2.jpg",
+        "premiere" : "2018"
     },
     {
         "id" : 8,
         "title" : "The Hangover",
-        "director" : "Todd Phillips"
+        "director" : "Todd Phillips",
+        "coverURL" : "https://ssl-gfx.filmweb.pl/po/72/11/487211/7250267.2.jpg",
+        "premiere" : "2009"
     },
     {
         "id" : 9,
         "title" : "Avatar",
-        "director" : "James Cameron"
+        "director" : "James Cameron",
+        "coverURL" : "https://ssl-gfx.filmweb.pl/po/91/13/299113/7322782.2.jpg",
+        "premiere" : "2009"
     },
     {
         "id" : 10,
         "title" : "Rocky Balboa",
-        "director" : "Sylvester Stallone"
+        "director" : "Sylvester Stallone",
+        "coverURL" : "https://ssl-gfx.filmweb.pl/po/80/45/248045/7272235.2.jpg",
+        "premiere" : "2006"
     },
     {
         "id" : 11,
         "title" : "Paper Towns",
-        "director" : "Jake Schreier"
+        "director" : "Jake Schreier",
+        "coverURL" : "https://ssl-gfx.filmweb.pl/po/91/48/719148/7690444.2.jpg",
+        "premiere" : "2015"
     },
     {
         "id" : 12,
         "title" : "Creed",
-        "director" : "Ryan Coogler"
+        "director" : "Ryan Coogler",
+        "coverURL" : "https://ssl-gfx.filmweb.pl/po/42/46/694246/7714734.2.jpg",
+        "premiere" : "2015"
     },
     {
         "id" : 13,
         "title" : "Jurassic World",
-        "director" : "Colin Trevorrow"
+        "director" : "Colin Trevorrow",
+        "coverURL" : "https://ssl-gfx.filmweb.pl/po/69/29/556929/7693193.2.jpg",
+        "premiere" : "2015"
     },
     {
         "id" : 14,
         "title" : "Mamma mia",
-        "director" : "Phyllida Lloyd"
+        "director" : "Phyllida Lloyd",
+        "coverURL" : "https://ssl-gfx.filmweb.pl/po/55/47/375547/7188985.2.jpg",
+        "premiere" : "2008"
     }
 ]
