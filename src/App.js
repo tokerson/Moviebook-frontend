@@ -15,7 +15,7 @@ import Account from './components/Account';
 import SalesmanTools from './components/SalesmanTools';
 import EditorTools from './components/EditorTools';
 import Actors from './components/Actors'
-import MovieList from './components/MovieList'
+import MovieListContainer from './containers/MovieListContainer'
 import Movie from './components/Movie'
 import TextField from '@material-ui/core/TextField';
 import { Dialog } from '@material-ui/core';
@@ -183,7 +183,7 @@ class App extends Component {
           <Route exact path="/" component={Home} />
           <Route exact path="/actors" component={Actors} />
           <Route exact path="/films/:title" component={Movie}></Route>
-          <Route exact path="/films" component={MovieList} />
+          <Route exact path="/films" component={MovieListContainer} />
           <Route exact path="/account" component={Account} />
           <Route exact path="/adminTools" component={AdminTools} />
           <Route exact path="/salesmanTools" component={SalesmanTools} />
