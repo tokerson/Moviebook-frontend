@@ -42,7 +42,7 @@ class MovieList extends Component {
     
     return (
       <div>
-          <TextField id="outlined-search" label="Search" margin="normal" varian="outlined" placeholder="Search" onChange={this.filterMovies}></TextField>
+          <TextField id="outlined-search" label="Search" margin="normal" varian="outlined" onChange={this.filterMovies}></TextField>
           <MovieListItem className="list" movies={movies}/>          
       </div>
     );
