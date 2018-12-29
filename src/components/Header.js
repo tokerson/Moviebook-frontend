@@ -5,6 +5,8 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import '../css/App.css';
 
+import LoginContainer from '../containers/LoginContainer'
+
 class Header extends Component {
 
     render(){
@@ -15,6 +17,7 @@ class Header extends Component {
                 Home
                 </Button>
                 <Typography variant="title" align="center" noWrap className="title">MovieBook</Typography>
+                <LoginContainer />
                 {/* { this.state.showLogIn ? <Button variant="outlined" size="small" onClick={ this.handleClickOpenLogin }>Log in</Button> : null}
                 { this.state.showLogOut ? <Button variant="outlined" size="small" onClick={this.handleClickLogOut}>Log out</Button> : null} */}
             </Toolbar>      

@@ -14,7 +14,6 @@ class MovieListContainer extends Component {
   
   componentWillMount() {
     this.props.movieListAll();
-    console.log(this.props)
   }
 
   state = {
@@ -33,8 +32,6 @@ class MovieListContainer extends Component {
       searching:  event.target.value.length > 0 
     });
 
-    // return filtered;
-    console.log(event.target.value)
   }
 
 
@@ -55,7 +52,6 @@ class MovieListContainer extends Component {
 };
 
 const mapStateToProps = (state) => {
-  console.log(state)
   return {
       movies:state.movies
   }
