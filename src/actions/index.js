@@ -6,9 +6,22 @@ import JSON from '../json/Movies.json';
 export function movieListAll(){
     
     const movies = JSON
-    
+
     return {
         type:'GET_MOVIES_ALL',
         payload: movies
+    }
+}
+
+export function movieDetail(id, title){
+    const movie = JSON.filter( movie => {
+        return movie.id == id && movie.title === title ;
+    })
+
+    console.log(movie);
+
+    return {
+        type:'GET_MOVIE_DETAIL',
+        payload: movie
     }
 }

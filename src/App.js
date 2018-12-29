@@ -182,7 +182,7 @@ class App extends Component {
           </Toolbar>
           <Route exact path="/" component={Home} />
           <Route exact path="/actors" component={Actors} />
-          <Route exact path="/films/:title" component={Movie}></Route>
+          <Route exact path="/films/:id/:title" component={Movie}></Route>
           <Route exact path="/films" component={MovieListContainer} />
           <Route exact path="/account" component={Account} />
           <Route exact path="/adminTools" component={AdminTools} />
