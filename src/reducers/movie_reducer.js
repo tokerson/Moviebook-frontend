@@ -6,6 +6,8 @@ export default function(state={}, action){
             return { ...state, movieDetail: action.payload}
         case 'GET_MOVIES_ALL':
             return { ...state, movieList: action.payload }
+        case 'CLEAR_MOVIE_DETAIL':
+            return { ...state, movieDetail: null}
         default:
             return state;
     }

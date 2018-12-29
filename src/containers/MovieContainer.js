@@ -2,7 +2,7 @@ import React , { Component } from 'react';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { movieDetail } from '../actions';
+import { movieDetail, clearMovieDetail } from '../actions';
 
 class MovieContainer extends Component {
     
@@ -10,9 +10,11 @@ class MovieContainer extends Component {
     //for a movie in a database, else movie's data is passed throught params.
     componentWillMount(){
         this.props.movieDetail(this.props.match.params.id, this.props.match.params.title);
-        // console.log(this.props.movieDetail(this.props.match.params.id,this.props.match.params.title))
-        // console.log(this.props.match.params.id + " " + this.props.match.params.title)
-        console.log(this.props.movies)
+    }
+
+    //this is needed when network is slow like 3G to clear previous view before showing another
+    componentWillUnmount(){
+        this.props.clearMovieDetail();
     }
 
     movieTemplate = (data) => (
@@ -42,7 +44,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-    return bindActionCreators({ movieDetail }, dispatch);
+    return bindActionCreators({ movieDetail, clearMovieDetail }, dispatch);
 }
 
 

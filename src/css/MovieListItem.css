@@ -1,7 +1,7 @@
 .movieListItem {
     /* display: block; */
     display: flex;
-    background-color: #efefef;
+    background-color: #dfdedeb6;
     border: 1px solid lightgray;
     border-radius: 2px;
     margin: 10px 0 20px 0;

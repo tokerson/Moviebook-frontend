@@ -15,7 +15,7 @@ export function movieListAll(){
 
 export function movieDetail(id, title){
     const movie = JSON.filter( movie => {
-        return movie.id == id && movie.title === title ;
+        return movie.id === id && movie.title === title ;
     })
 
     console.log(movie);
@@ -23,5 +23,12 @@ export function movieDetail(id, title){
     return {
         type:'GET_MOVIE_DETAIL',
         payload: movie
+    }
+}
+
+export function clearMovieDetail(){
+    return {
+        type: 'CLEAR_MOVIE_DETAIL',
+        payload: null
     }
 }

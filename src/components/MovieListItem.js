@@ -8,10 +8,8 @@ const MovieListItem = (props) => {
         
         props.movies.map(movie => {
         return (
-            // <div key={movie.id} className="movieListItem">
                 <NavLink key={movie.id} to={{
                     pathname: '/films/'.concat(movie.id + "/").concat(movie.title),
-                    params: movie
                     }} className="movieListItem" >
 
                     <img className="coverage" src={movie.coverURL} alt={"coverage for movie " + movie.title}></img>
@@ -23,7 +21,6 @@ const MovieListItem = (props) => {
 
 
                 </NavLink>
-            // </div> 
          )
         }) : null;
 
