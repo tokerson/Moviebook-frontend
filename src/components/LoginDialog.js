@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
 import { Dialog } from '@material-ui/core';
-import { DialogTitle, DialogContent } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
 import { Field, reduxForm } from 'redux-form';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { closeLogin, verifyData } from '../actions';
+import { clickLogin, closeLogin, verifyData, logUser, failedLogin } from '../actions';
+
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogActions from '@material-ui/core/DialogActions';
+import { DialogTitle, DialogContent } from '@material-ui/core';
+
 
 class LoginDialog extends Component {
     
@@ -30,7 +34,18 @@ class LoginDialog extends Component {
     }
 
     onSubmit = (values) => {
-        this.props.verifyData(values);
+        console.log(values);
+        this.props.verifyData(values).then( () => {
+            if(this.props.login.status !== "") {
+                this.props.logUser();
+            }
+            else this.props.failedLogin();
+        });
+        
+    }
+
+    logAgain = () => {
+        this.props.clickLogin();
     }
 
     render(){
@@ -61,6 +76,23 @@ class LoginDialog extends Component {
                             <Button variant="outlined" size="small">Register</Button>
                         </form>
                     </DialogContent>
+                /<Dialog
+                    open={this.props.login.login_data.failed}
+                    aria-labelledby="alert-dialog-title"
+                    aria-describedby="alert-dialog-description"
+                >
+                    <DialogTitle id="alert-dialog-title">Error</DialogTitle>
+                    <DialogContent>
+                        <DialogContentText id="alert-dialog-description">
+                            Nie udało się zalogować
+                        </DialogContentText>
+                    </DialogContent>
+                    <DialogActions>
+                        <Button onClick={this.logAgain}>
+                            Close
+                        </Button>
+                    </DialogActions>
+                </Dialog> 
             </Dialog>
         );
     }
@@ -83,12 +115,11 @@ const validate = (values) => {
 const mapStateToProps = (state) => {
     return {
         login: state.login,
-        status: state.data
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
-    return bindActionCreators({ closeLogin, verifyData }, dispatch);
+    return bindActionCreators({ clickLogin, closeLogin, verifyData, logUser, failedLogin }, dispatch);
 }
 
 export default reduxForm({

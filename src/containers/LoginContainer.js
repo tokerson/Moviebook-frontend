@@ -17,6 +17,7 @@ class LoginContainer extends Component {
 
     handleClick = ()=>{
         this.props.clickLogin();
+        
     }
 
 
