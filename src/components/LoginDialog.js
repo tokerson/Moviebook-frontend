@@ -20,12 +20,11 @@ class LoginDialog extends Component {
     }
 
     renderInputField = (field) => {
-        const type = field.name === "password" ? "password" : "text";
 
         //field.meta.touched says if you tried to input antyhing so the error doesnt appear on start up
         return(
             <div className="form-input">
-                <TextField label={field.label} type={type} {...field.input}/>
+                <TextField label={field.label} type={field.type} {...field.input}/>
                 <div className="error" >
                     {field.meta.touched ? field.meta.error: ''}
                 </div>
@@ -35,12 +34,17 @@ class LoginDialog extends Component {
 
     onSubmit = (values) => {
         console.log(values);
+        const { reset } = this.props;
+
         this.props.verifyData(values).then( () => {
             if(this.props.login.status !== "") {
-                this.props.logUser();
+                this.props.logUser(values.username);
             }
             else this.props.failedLogin();
+        }).then(()=>{
+            reset();
         });
+
         
     }
 
@@ -63,12 +67,14 @@ class LoginDialog extends Component {
                             <Field
                                 label="Username"
                                 name="username"
+                                type="text"
                                 component={this.renderInputField}
                             />
                             <br /><br />
                             <Field
                                 label="Password"
                                 name="password"
+                                type="password"
                                 component={this.renderInputField}
                             />
                             <br /><br /><br />

@@ -1,11 +1,24 @@
 import axios from 'axios';
+
 const URL = 'http://localhost:8080'
+
 
 export function clickLogin() {
     return {
         type: 'CLICK_LOGIN',
         payload: {
             logging: true,
+            logged: false,
+            failed: false,
+        }
+    }
+}
+
+export function clickLogout() {
+    return {
+        type: 'CLICK_LOGOUT',
+        payload: {
+            logging: false,
             logged: false,
             failed: false,
         }
@@ -36,12 +49,14 @@ export function verifyData(values) {
 }
 
 export function logUser(username){
+
     return {
         type:'LOG_USER',
         payload: {
             logging: false,
             logged: true,
-            failed:false
+            failed:false,
+            username:username
         }
     }
 }

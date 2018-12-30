@@ -7,6 +7,12 @@ export default function(state={}, action){
                 ...state,
                 login_data: action.payload
             }
+        case 'CLICK_LOGOUT':
+            return { 
+                ...state,
+                login_data: action.payload,
+                status: '',
+            }
         case 'CLOSE_LOGIN':
             return {
                 ...state,
