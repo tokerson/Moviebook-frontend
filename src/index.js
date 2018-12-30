@@ -7,14 +7,15 @@ import './css/index.css';
 //redux
 import { createStore, applyMiddleware, compose } from 'redux'
 import { Provider } from 'react-redux'
-//import thunk from 'redux-thunk'
+import thunk from 'redux-thunk'
 import promiseMiddleware from 'redux-promise'
 import rootReducer from './reducers'
+
 
 const store = createStore( 
         rootReducer,
         compose(
-            applyMiddleware(promiseMiddleware),
+            applyMiddleware(promiseMiddleware,thunk),
             window.devToolsExtension ? window.devToolsExtension() : f => f
         )
     );

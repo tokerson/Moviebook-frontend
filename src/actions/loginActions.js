@@ -1,41 +1,37 @@
 import axios from 'axios';
+const URL = 'http://localhost:8080'
 
 export function clickLogin() {
     return {
         type: 'CLICK_LOGIN',
         payload: {
             logging: true,
-            username: '',
-            password: '',
+            logged: false
         }
     }
 }
 
-export function closeLogin() {
+export const closeLogin = () => {
     return {
         type: 'CLOSE_LOGIN',
         payload: { 
             logging: false,
-            username: '',
-            password: ''
         }
     }
 }
 
-export function updateUsername(event) {
+export function verifyData(values) {
+    let status = "not-ok";
+
+    const request = axios.get(`${URL}/login/${values.username}/${values.password}`)
+                    .then(response => response.data);
     return {
-        type: 'UPDATE_USERNAME',
-        payload : event.target.value,
+        type:'VERIFY_DATA',
+        payload:request
     }
+
 }
 
-
-export function updatePassword(event) {
-    return {
-        type: 'UPDATE_PASSWORD',
-        payload: event.target.value ,
-    }
-}
 
 // export function verifyData(login, pass) {
 
