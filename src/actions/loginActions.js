@@ -40,6 +40,8 @@ export function verifyData(values) {
     const request = axios.get(`${URL}/login/${values.username}/${values.password}`)
                     .then(response => response.data)
                     .catch(err => console.log(err));
+
+                    
     
     return {
         type:'VERIFY_DATA',

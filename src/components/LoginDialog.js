@@ -33,11 +33,10 @@ class LoginDialog extends Component {
     }
 
     onSubmit = (values) => {
-        console.log(values);
         const { reset } = this.props;
 
         this.props.verifyData(values).then( () => {
-            if(this.props.login.status !== "") {
+            if(this.props.login.status && this.props.login.status !== "") {
                 this.props.logUser(values.username);
             }
             else this.props.failedLogin();

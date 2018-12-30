@@ -20,7 +20,6 @@ class LoginContainer extends Component {
     }
 
     handleLogoutClick = ()=>{
-        console.log("click")
         this.props.clickLogout();
     }
 
