@@ -8,12 +8,24 @@ import TextField from '@material-ui/core/TextField';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { closeLogin } from '../actions';
+import { closeLogin, updateUsername, updatePassword } from '../actions';
 
 class LoginDialog extends Component {
     
     handleClickCloseLogin = () => {
         this.props.closeLogin();
+    }
+
+    handleUsernameChange = (event) => {
+        this.props.updateUsername(event);
+    }
+
+    handlePasswordChange = (event) => {
+        this.props.updatePassword(event);
+    }
+
+    submitLogin = () => {
+        
     }
 
     render(){
@@ -25,23 +37,25 @@ class LoginDialog extends Component {
                 >
                     <DialogTitle id="form-dialog-title">Log in</DialogTitle>
                     <DialogContent>
+
                         <TextField
                             id="standard-name"
                             label="Username"
-                            //onChange={this.handleUsernameChange.bind(this)}
-                            //value={this.state.username}
+                            onChange={this.handleUsernameChange}
+                            value={this.props.login.login_data.username}
                         />
                         <br /><br />
                         <TextField
                             id="standard-password-input"
                             label="Password"
                             type="password"
-                           // onChange={this.handlePasswordChange.bind(this)}
-                            //value={this.state.password}
+                            onChange={this.handlePasswordChange}
+                            value={this.props.login.login_data.password}
                         />
                         <br /><br /><br />
-                        <Button variant="outlined"  size="small">Submit</Button>
-                        <Button variant="outlined"  size="small">Register</Button>
+                        <Button variant="outlined" size="small" onClick={this.submitLogin}>Submit</Button>
+                        <Button variant="outlined" size="small">Register</Button>
+
                     </DialogContent>
             </Dialog>
         );
@@ -54,7 +68,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-    return bindActionCreators({ closeLogin }, dispatch);
+    return bindActionCreators({ closeLogin, updateUsername, updatePassword }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginDialog);

@@ -3,9 +3,7 @@ import {
   BrowserRouter as Router,
   Route,
 } from 'react-router-dom';
-import Toolbar from '@material-ui/core/Toolbar';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
+
 import './css/App.css';
 
 import Home from './components/Home';
@@ -17,13 +15,7 @@ import EditorTools from './components/EditorTools';
 import Actors from './components/Actors'
 import MovieListContainer from './containers/MovieListContainer'
 import Movie from './components/Movie'
-import TextField from '@material-ui/core/TextField';
-import { Dialog } from '@material-ui/core';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContentText from '@material-ui/core/DialogContentText';
 
-import axios from 'axios';
-import { DialogTitle, DialogContent } from '@material-ui/core';
 
 class App extends Component {
   // state = {
