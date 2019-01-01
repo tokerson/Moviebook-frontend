@@ -2,194 +2,171 @@ import React, { Component } from 'react';
 import {
   BrowserRouter as Router,
   Route,
-  Link
 } from 'react-router-dom';
-import Toolbar from '@material-ui/core/Toolbar';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
+
 import './css/App.css';
 
 import Home from './components/Home';
+import Header from './components/Header';
 import AdminTools from './components/AdminTools';
 import Account from './components/Account';
 import SalesmanTools from './components/SalesmanTools';
 import EditorTools from './components/EditorTools';
 import Actors from './components/Actors'
-import MovieList from './components/MovieList'
+import MovieListContainer from './containers/MovieListContainer'
 import Movie from './components/Movie'
-import TextField from '@material-ui/core/TextField';
-import { Dialog } from '@material-ui/core';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContentText from '@material-ui/core/DialogContentText';
 
-import axios from 'axios';
-import { DialogTitle, DialogContent } from '@material-ui/core';
 
 class App extends Component {
-  state = {
-    loginOpen: false,
-    username: '',
-    password: '',
-    showLogOut: false,
-    showLogIn: true,
-    showAccoutOptions: false,
-    showAdministrator: false,
-    showSalesman: false,
-    showEditor: false,
-    showRegister: false,
-    passwordRetyped: '',
-    showUnsuccessful: false,
-    alertContent: '',
-  };
+  // state = {
+  //   loginOpen: false,
+  //   username: '',
+  //   password: '',
+  //   showLogOut: false,
+  //   showLogIn: true,
+  //   showAccoutOptions: false,
+  //   showAdministrator: false,
+  //   showSalesman: false,
+  //   showEditor: false,
+  //   showRegister: false,
+  //   passwordRetyped: '',
+  //   showUnsuccessful: false,
+  //   alertContent: '',
+  // };
 
-  handleClickOpenLogin = () => {
-    this.setState({ loginOpen: true });
-  }
+  // handleClickOpenLogin = () => {
+  //   this.setState({ loginOpen: true });
+  // }
 
-  handleClickLogOut = () => {
-    this.setState({ 
-      showLogIn: true,
-      showLogOut: false, 
-      showAccoutOptions: false,
-      showAdministrator: false,
-      showEditor: false,
-      showSalesman: false, 
-      username: '',
-    })
-  }
+  // handleClickLogOut = () => {
+  //   this.setState({ 
+  //     showLogIn: true,
+  //     showLogOut: false, 
+  //     showAccoutOptions: false,
+  //     showAdministrator: false,
+  //     showEditor: false,
+  //     showSalesman: false, 
+  //     username: '',
+  //   })
+  // }
 
-  handleUsernameChange(event) {
+  // handleUsernameChange(event) {
     
-    this.setState({
-      username: event.target.value,
-    });
-  }
+  //   this.setState({
+  //     username: event.target.value,
+  //   });
+  // }
 
-  handlePasswordChange(event) {
+  // handlePasswordChange(event) {
     
-    this.setState({
-      password: event.target.value,
-    });
-  }
+  //   this.setState({
+  //     password: event.target.value,
+  //   });
+  // }
 
-  handlePasswordRetypedChange(event) {
+  // handlePasswordRetypedChange(event) {
     
-    this.setState({
-      passwordRetyped: event.target.value,
-    });
-  }
+  //   this.setState({
+  //     passwordRetyped: event.target.value,
+  //   });
+  // }
 
-  handleClickRegister = () => {
-    this.setState({
-      username: '',
-      password: '',
-      loginOpen: false,
-      showRegister: true,
-      passwordRetyped: '',
+  // handleClickRegister = () => {
+  //   this.setState({
+  //     username: '',
+  //     password: '',
+  //     loginOpen: false,
+  //     showRegister: true,
+  //     passwordRetyped: '',
 
-    })
-  }
+  //   })
+  // }
 
-  handleClickCloseLogin = () => {
-    this.setState({loginOpen: false,})
-  }
+  // handleClickCloseLogin = () => {
+  //   this.setState({loginOpen: false,})
+  // }
 
-  handleCloseUnsuccessful = () => {
-    this.setState({showUnsuccessful: false,})
-  }
+  // handleCloseUnsuccessful = () => {
+  //   this.setState({showUnsuccessful: false,})
+  // }
 
-  handleCloseRegister = () => {
-    this.setState({showRegister: false,})
-  }
+  // handleCloseRegister = () => {
+  //   this.setState({showRegister: false,})
+  // }
 
-  handleClickSubmitLogin = () => {
-    this.setState({ loginOpen: false });
-    var self = this;
-    var apiUrl = 'http://localhost:8080/login/';
-    axios.get(apiUrl+this.state.username+'/'+this.state.password).then(function (response) {
-      if( response.data !== '') {
-        self.setState({
-          showLogIn: false,
-          showLogOut: true,
-          showAccoutOptions: true,
-          password: '',
-        })
+  // handleClickSubmitLogin = () => {
+  //   this.setState({ loginOpen: false });
+  //   var self = this;
+  //   var apiUrl = 'http://localhost:8080/login/';
+  //   axios.get(apiUrl+this.state.username+'/'+this.state.password).then(function (response) {
+  //     if( response.data !== '') {
+  //       self.setState({
+  //         showLogIn: false,
+  //         showLogOut: true,
+  //         showAccoutOptions: true,
+  //         password: '',
+  //       })
 
-        if( response.data === 'Administrator') {
-          self.setState({
-            showAdministrator: true,
-          })
-        }
-        else if( response.data === 'Salesman') {
-          self.setState({
-            showSalesman: true,
-          })
-        }
-        else if( response.data === 'Editor') {
-          self.setState({
-            showEditor: true,
-          })
-        }
-      }
-      else {
-        self.setState({alertContent: 'Log in unsuccessful!', showUnsuccessful: true, })
-      }
+  //       if( response.data === 'Administrator') {
+  //         self.setState({
+  //           showAdministrator: true,
+  //         })
+  //       }
+  //       else if( response.data === 'Salesman') {
+  //         self.setState({
+  //           showSalesman: true,
+  //         })
+  //       }
+  //       else if( response.data === 'Editor') {
+  //         self.setState({
+  //           showEditor: true,
+  //         })
+  //       }
+  //     }
+  //     else {
+  //       self.setState({alertContent: 'Log in unsuccessful!', showUnsuccessful: true, })
+  //     }
 
-    });
+  //   });
 
-  }
+  // }
 
-  handleClickSubmitRegister = () => {
-    this.setState({ showRegister: false, });
-    var self = this;
-    var apiUrl = 'http://localhost:8080/register/';
+  // handleClickSubmitRegister = () => {
+  //   this.setState({ showRegister: false, });
+  //   var self = this;
+  //   var apiUrl = 'http://localhost:8080/register/';
 
-    if( this.state.password === this.state.passwordRetyped) {
-      axios.post(apiUrl+this.state.username+'/'+this.state.password).then(function (response) {
-        if(response.data === 'Successful') {
-          self.setState({passwordRetyped: '',});
-          self.handleClickSubmitLogin();
-        } else {
-          self.handleCloseRegister();
-          self.setState({alertContent: 'Registration unsuccessful!', showUnsuccessful: true,});
-        }
-      });
-    } else {
-      this.handleCloseRegister();
-      this.setState({alertContent: "Passwords don't match!", showUnsuccessful: true,});
-    }
-  }
+  //   if( this.state.password === this.state.passwordRetyped) {
+  //     axios.post(apiUrl+this.state.username+'/'+this.state.password).then(function (response) {
+  //       if(response.data === 'Successful') {
+  //         self.setState({passwordRetyped: '',});
+  //         self.handleClickSubmitLogin();
+  //       } else {
+  //         self.handleCloseRegister();
+  //         self.setState({alertContent: 'Registration unsuccessful!', showUnsuccessful: true,});
+  //       }
+  //     });
+  //   } else {
+  //     this.handleCloseRegister();
+  //     this.setState({alertContent: "Passwords don't match!", showUnsuccessful: true,});
+  //   }
+  // }
 
   render() {
     return (
       <Router>
         <div>
-          <Toolbar className="toolbar">
-            <Button component={Link} to="/" variant="outlined" size="small">
-              Home
-            </Button>
-            <Typography variant="title" align="center" noWrap className="title">MovieBook</Typography>
-            { this.state.showLogIn ? <Button variant="outlined" size="small" onClick={ this.handleClickOpenLogin }>Log in</Button> : null}
-            { this.state.showLogOut ? <Button variant="outlined" size="small" onClick={this.handleClickLogOut}>Log out</Button> : null}
-          </Toolbar>      
-          <Toolbar variant="dense">
-            <Button size="small" component={Link} to="/films">films</Button>
-            <Button size="small" component={Link} to="/actors">actors</Button>
-            {this.state.showAccoutOptions ? <Button size="small" component={Link} to="/account">account</Button> : null}
-            {this.state.showAdministrator ? <Button size="small" component={Link} to="/adminTools">tools</Button> : null}
-            {this.state.showSalesman ? <Button size="small" component={Link} to="/salesmanTools">tools</Button> : null}
-            {this.state.showEditor ? <Button size="small" component={Link} to="/editorTools">tools</Button> : null}
-          </Toolbar>
+          <Header />
           <Route exact path="/" component={Home} />
           <Route exact path="/actors" component={Actors} />
-          <Route exact path="/films/:title" component={Movie}></Route>
-          <Route exact path="/films" component={MovieList} />
+          <Route exact path="/films/:id/:title" component={Movie}></Route>
+          <Route exact path="/films" component={MovieListContainer} />
           <Route exact path="/account" component={Account} />
           <Route exact path="/adminTools" component={AdminTools} />
           <Route exact path="/salesmanTools" component={SalesmanTools} />
           <Route exact path="/editorTools" component={EditorTools} />
 
-          <Dialog
+          {/* <Dialog
             open = {this.state.loginOpen}
             onClose={this.handleClickCloseLogin}
             aria-labelledby="form-dialog-title"
@@ -267,7 +244,7 @@ class App extends Component {
               Close
             </Button>
           </DialogActions>
-        </Dialog>
+        </Dialog> */}
 
         </div>
       </Router>
