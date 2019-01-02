@@ -60,8 +60,6 @@ export const closeRegister = () => {
 
 export const handleRegistration = (values) => {
    
-
-
     const request = axios.post(`${URL}/register/${values.username}/${values.password}`)
                     .then(response => response.data)
                     .catch(err => console.log(err));
@@ -107,6 +105,7 @@ export function failedLogin(){
             failed:true,
         }
     }
+
 }
 
 export function failedRegistration(){
@@ -120,4 +119,5 @@ export function failedRegistration(){
             failedRegistration: true,
         }
     }
+
 }

@@ -16,6 +16,7 @@ import { DialogTitle, DialogContent } from '@material-ui/core';
 class LoginDialog extends Component {
     
     handleClickCloseLogin = () => {
+
         const { reset } = this.props;
 
         this.props.closeLogin();
@@ -48,7 +49,9 @@ class LoginDialog extends Component {
         )
     }
 
+
     onLoginSubmit = (values) => {
+
         const { reset } = this.props;
 
         this.props.verifyData(values).then( () => {
@@ -66,6 +69,7 @@ class LoginDialog extends Component {
         this.props.clickLogin();
     }
 
+
     onRegisterSubmit = (values) => {
 
         const { reset } = this.props;
@@ -79,12 +83,13 @@ class LoginDialog extends Component {
         //this.props.handleRegistration();
     }
 
-
     render(){
         // handleSubmit is given by redux-form 
         return(
             <Dialog className="Form"
+
                     open={this.props.open}
+
                     onClose={this.handleClickCloseLogin}
                     aria-labelledby="form-dialog-title"
                 >
@@ -107,6 +112,7 @@ class LoginDialog extends Component {
                             />
                             <br /><br /><br />
                             <Button variant="outlined" size="small" type="submit">Submit</Button>
+
                             <Button variant="outlined" size="small" onClick={this.handleOpenRegister}>Register</Button>
                         </form>
 
@@ -207,7 +213,7 @@ class LoginDialog extends Component {
                                     </Dialog> 
                                 :null}
                             
-                
+  
             </Dialog>
         );
     }

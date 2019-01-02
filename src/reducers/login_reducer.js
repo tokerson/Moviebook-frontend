@@ -18,7 +18,6 @@ export default function(state={}, action){
                 ...state,
                 login_data: action.payload
             }
-
         case 'CLICK_REGISTER':
             return {
                 ...state,
@@ -51,6 +50,7 @@ export default function(state={}, action){
                 ...state,
                 login_data: action.payload
             }
+
         case 'FAILED_REGISTRATION':
             return {
                 ...state,
