@@ -35,13 +35,48 @@ export const closeLogin = () => {
     }
 }
 
+export function clickRegister() {
+    return {
+        type: 'CLICK_REGISTER',
+        payload: {
+            logging: true,
+            logged: false,
+            failed: false,
+            registering: true,
+        }
+    }
+}
+
+export const closeRegister = () => {
+    return {
+        type: 'CLOSE_REGISTER',
+        payload: { 
+            logging: false,
+            failed: false,
+            registering: false,
+        }
+    }
+}
+
+export const handleRegistration = (values) => {
+   
+
+
+    const request = axios.post(`${URL}/register/${values.username}/${values.password}`)
+                    .then(response => response.data)
+                    .catch(err => console.log(err));
+   
+    return {
+        type: 'HANDLE_REGISTRATION',
+        payload: request
+    }
+}
+
 export function verifyData(values) {
 
     const request = axios.get(`${URL}/login/${values.username}/${values.password}`)
                     .then(response => response.data)
-                    .catch(err => console.log(err));
-
-                    
+                    .catch(err => console.log(err));     
     
     return {
         type:'VERIFY_DATA',
@@ -70,6 +105,19 @@ export function failedLogin(){
             logging: true,
             logged:false,
             failed:true,
+        }
+    }
+}
+
+export function failedRegistration(){
+    return {
+        type: 'FAILED_REGISTRATION',
+        payload: {
+            logging: true,
+            logged:false,
+            failed:true,
+            registering: false,
+            failedRegistration: true,
         }
     }
 }

@@ -18,6 +18,24 @@ export default function(state={}, action){
                 ...state,
                 login_data: action.payload
             }
+
+        case 'CLICK_REGISTER':
+            return {
+                ...state,
+                login_data: action.payload,
+                success:'',
+            }
+        case 'CLOSE_REGISTER':
+            return {
+                ...state,
+                login_data: action.payload,
+                success:''
+            }
+        case 'HANDLE_REGISTRATION':
+            return {
+                ...state,
+                success: action.payload
+            }
         case 'VERIFY_DATA':
             return {
                 ...state,
@@ -29,6 +47,11 @@ export default function(state={}, action){
                 login_data: action.payload
             }
         case 'FAILED_LOGIN':
+            return {
+                ...state,
+                login_data: action.payload
+            }
+        case 'FAILED_REGISTRATION':
             return {
                 ...state,
                 login_data: action.payload
