@@ -7,16 +7,20 @@ const MovieListItem = (props) => {
     const movies = props.movies && props.movies.length > 0 ? 
         
         props.movies.map(movie => {
+
+        const year = movie.dateOfPremiere.substring(0,4);
+        const genre = movie.genre.join(", ");
+
         return (
-                <NavLink key={movie.id} to={{
-                    pathname: '/films/'.concat(movie.id + "/").concat(movie.title),
+                <NavLink key={movie.idMovie} to={{
+                    pathname: '/films/'.concat(movie.idMovie + "/").concat(movie.title),
                     }} className="movieListItem" >
 
-                    <img className="coverage" src={movie.coverURL} alt={"coverage for movie " + movie.title}></img>
+                    <img className="coverage" src={movie.pictureUrl} alt={"coverage for movie " + movie.title}></img>
                    
                     <div className="moviePreview">
-                        <h2 id="title">{movie.title} ({movie.premiere})</h2>
-                        <p className="plainText">Director: {movie.director}</p>
+                        <h2 id="title">{movie.title} ({year})</h2>
+                        <p className="plainText">Genre: {genre}</p>
                     </div>
 
 

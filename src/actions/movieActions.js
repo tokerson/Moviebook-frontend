@@ -1,10 +1,16 @@
 import JSON from '../json/Movies.json';
-//import axios from 'axios'
+import axios from 'axios'
+const URL = 'http://localhost:8080'
+
 
 export function movieListAll(){
-    
-    const movies = JSON
 
+    
+    
+    const movies = axios.get(`${URL}/allMovies`)
+                   .then(response => response.data)
+                   .catch(err => console.log(err))
+                
     return {
         type:'GET_MOVIES_ALL',
         payload: movies
@@ -12,10 +18,13 @@ export function movieListAll(){
 }
 
 export function movieDetail(id, title){
-    const movie = JSON.filter( movie => {
-        return movie.id === id && movie.title === title ;
-    })
-
+    
+    const movie = axios.get(`${URL}/movie/${id}`)
+                  .then(response => response.data)
+                  .catch(err => console.log(err));
+                  
+    const sth = movie;
+    // console.log(movie);
     return {
         type:'GET_MOVIE_DETAIL',
         payload: movie

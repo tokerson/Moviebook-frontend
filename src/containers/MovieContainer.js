@@ -20,10 +20,10 @@ class MovieContainer extends Component {
     movieTemplate = (data) => (
         data.movieDetail ? 
             <div>
-                <img src={data.movieDetail[0].coverURL} alt="coverage of this movie"></img>
-                <h3>Title : {data.movieDetail[0].title}</h3>
-                <h3>Director: {data.movieDetail[0].director}</h3>
-                <h4>Premiere: {data.movieDetail[0].premiere}</h4>
+                <img src={data.movieDetail.pictureUrl} alt="coverage of this movie"></img>
+                <h3>Title : {data.movieDetail.title}</h3>
+                <h3>Description: {data.movieDetail.description}</h3>
+                <h4>Premiere: {data.movieDetail.dateOfPremiere}</h4>
             </div>
         : null
     )
