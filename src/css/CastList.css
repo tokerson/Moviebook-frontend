@@ -1,0 +1,30 @@
+.castWrapper {
+    display: flex;
+    flex-direction: column;
+    background-color: #dfdedeb6;
+    border: 1px solid lightgray;
+    border-radius: 2px;
+    margin: 10px 0 20px 0;
+    color: black;
+    text-decoration: none;
+}
+
+.castItemWrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center; 
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.actorAvatar {
+    overflow: hidden;
+    height: 100px;
+    width: 80px;
+    border-radius : 2px;
+    margin-right: 10px;
+}
+.actorAvatar img {
+    height: 100px;
+    width: auto;
+}
