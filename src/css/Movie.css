@@ -27,6 +27,7 @@
     flex-direction: column; */
     margin-left : 10px;
     margin-right: 10px;
+    
 }
 
 
@@ -35,7 +36,6 @@
     flex-direction: row;
     align-items: baseline;
     margin-right: 10px;
-
 }
 
 .movie-title {
