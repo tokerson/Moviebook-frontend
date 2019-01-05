@@ -3,6 +3,7 @@ import React , { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { movieDetail, clearMovieDetail } from '../actions';
+import '../css/Movie.css';
 
 class MovieContainer extends Component {
     
@@ -18,17 +19,26 @@ class MovieContainer extends Component {
     }
 
     movieTemplate = (data) => (
-        data.movieDetail ? 
-            <div>
-                <img src={data.movieDetail.pictureUrl} alt="coverage of this movie"></img>
-                <h3>Title : {data.movieDetail.title}</h3>
-                <h3>Description: {data.movieDetail.description}</h3>
-                <h4>Premiere: {data.movieDetail.dateOfPremiere}</h4>
-            </div>
-        : null
+            data.movieDetail ? 
+                <div className="movieDetailsWrapper">
+                    <img className="picture" src={data.movieDetail.pictureUrl} alt="coverage of this movie"></img>
+                    <div className="movieDetails">
+                        <div className="rating">
+                            <h2 className="movie-title" >{data.movieDetail.title} </h2>
+                            <h3>{data.movieDetail.rating} / 10 </h3>
+                        </div>
+                        <p> {data.movieDetail.description}</p>
+                        <p><b>Premiere:</b> {data.movieDetail.dateOfPremiere}</p>
+                        <p><b>Genre:</b> {data.movieDetail.genres.join(", ")}</p>
+                        <p><b>Box Office:</b> {data.movieDetail.boxOffice} $</p>
+                        <p><b>Production:</b> {data.movieDetail.country}</p>
+                    </div>
+                </div>
+            : null
     )
 
     render(){
+        console.log(this.props.movies)
         return(
             <div>
                 {this.movieTemplate(this.props.movies)}
