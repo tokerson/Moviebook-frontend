@@ -10,16 +10,23 @@ import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
 import promiseMiddleware from 'redux-promise'
 import rootReducer from './reducers'
+import { loadState, saveState } from './localStorage';
 
-
+const persistedState = loadState();
 const store = createStore( 
         rootReducer,
+        persistedState,
         compose(
             applyMiddleware(promiseMiddleware,thunk),
             window.devToolsExtension ? window.devToolsExtension() : f => f
         )
     );
 
+store.subscribe(()=>{
+    saveState({
+        login: store.getState().login
+    })
+}) 
 ReactDOM.render(
     <Provider store={store}>
         <App />
