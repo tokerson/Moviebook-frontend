@@ -1,6 +1,6 @@
 import React  from 'react';
 import { NavLink } from 'react-router-dom'
-import '../css/MovieListItem.css'
+import '../css/ListItem.css'
 
 const ArtistListItem = (props) => {
 

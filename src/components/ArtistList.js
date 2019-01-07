@@ -1,8 +1,8 @@
 import React , { Component } from 'react';
 import axios from 'axios';
-import "../css/MovieListItem.css";
 import ArtistListItem from './ArtistListItem';
 import TextField from '@material-ui/core/TextField';
+import { FaSearch, FaFileExcel } from 'react-icons/fa';
 
 
 
@@ -61,7 +61,7 @@ class AristList extends Component {
             ) 
         });
         return(
-            <div>
+            <div >
                 <TextField id="outlined-search" label="Search" margin="normal" varian="outlined" onChange={this.filterArtists}></TextField>
                 {artists}
             </div>
