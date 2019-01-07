@@ -12,9 +12,8 @@ import AdminTools from './components/AdminTools';
 import Account from './components/Account';
 import SalesmanTools from './components/SalesmanTools';
 import EditorTools from './components/EditorTools';
-import Actors from './components/Actors'
-import MovieListContainer from './containers/MovieListContainer'
-import Movie from './components/Movie'
+import MovieListContainer from './containers/MovieListContainer';
+import Movie from './components/Movie';
 import AristList from './components/ArtistList';
 
 

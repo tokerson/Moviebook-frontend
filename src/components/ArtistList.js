@@ -1,5 +1,11 @@
 import React , { Component } from 'react';
 import axios from 'axios';
+import "../css/MovieListItem.css";
+import ArtistListItem from './ArtistListItem';
+import TextField from '@material-ui/core/TextField';
+
+
+
 
 const URL = 'http://localhost:8080';
 
@@ -10,11 +16,31 @@ class AristList extends Component {
         super(props);
 
         this.state = {
-            artists: []
+            artists: [],
+            filtered : [],
+            searching : false
         }
     }
 
+    filterArtists = (event) => {
+        let filtered = this.state.artists.filter(item => {
+          //toUpperCase, so user doesn't have to bother about Upper or Lower case sensitive titles.
+          const name = item.name + " " +item.surname;
+          return name.toUpperCase().indexOf(event.target.value.toUpperCase()) > -1;
+        });
+    
+        this.setState({
+          filtered: filtered,
+          searching:  event.target.value.length > 0 
+        });
+    
+    }
+
     componentWillMount(){
+        this.getArtists();
+    }
+
+    getArtists = () => {
         axios.get(`${URL}/allArtists`)
         .then(response => {
             const artists = response.data;
@@ -23,16 +49,20 @@ class AristList extends Component {
     }
 
     render(){
-        const artists = this.state.artists.map( artist => {
+
+        let artistList = this.state.filtered.length === 0 ? this.state.artists : this.state.filtered;
+        if(this.state.filtered.length === 0 && this.state.searching === true) {
+          artistList = []
+        }
+
+        const artists = artistList.map( artist => {
             return(
-                <div key={artist.id}>
-                    <p>{artist.name} {artist.surname}</p>
-                </div>
+                <ArtistListItem key={artist.id} artist={artist} />
             ) 
         });
-        console.log(this.state.artists);
         return(
             <div>
+                <TextField id="outlined-search" label="Search" margin="normal" varian="outlined" onChange={this.filterArtists}></TextField>
                 {artists}
             </div>
         )

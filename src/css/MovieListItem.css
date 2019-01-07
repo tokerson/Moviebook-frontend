@@ -27,6 +27,22 @@
     border-radius : 2px;
 }
 
+.listItemAvatar {
+    height: 190px;
+    width: 135px;
+    margin-top : 5px;
+    margin-left : 5px;
+    margin-bottom : 5px;
+    border-radius : 2px;
+    overflow: hidden;
+}
+
+.listItemAvatar img {
+    height: 190px;
+    width:auto;
+    margin-left: -14%;
+}
+
 .moviePreview {
     display: flex;
     flex-direction: column;
