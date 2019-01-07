@@ -23,8 +23,6 @@ export function movieDetail(id, title){
                   .then(response => response.data)
                   .catch(err => console.log(err));
                   
-    const sth = movie;
-    // console.log(movie);
     return {
         type:'GET_MOVIE_DETAIL',
         payload: movie

@@ -23,7 +23,7 @@ class Header extends Component {
             </Toolbar>      
             <Toolbar variant="dense">
                 <Button size="small" component={Link} to="/films">films</Button>
-                <Button size="small" component={Link} to="/actors">actors</Button>
+                <Button size="small" component={Link} to="/artists">artists</Button>
                 {/* {this.state.showAccoutOptions ? <Button size="small" component={Link} to="/account">account</Button> : null}
                 {this.state.showAdministrator ? <Button size="small" component={Link} to="/adminTools">tools</Button> : null}
                 {this.state.showSalesman ? <Button size="small" component={Link} to="/salesmanTools">tools</Button> : null}
