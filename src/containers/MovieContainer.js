@@ -7,8 +7,10 @@ import '../css/Movie.css';
 
 import CastList from '../components/CastList';
 import ReviewList from '../components/ReviewList';
+import ReviewForm from '../components/ReviewForm';
 
 import { MdStar } from 'react-icons/md';
+
 class MovieContainer extends Component {
     
     //this one checks if an URL is created by clicking a movie or by typing in a url, if u typed it in, then it looks
@@ -45,16 +47,35 @@ class MovieContainer extends Component {
             : null
     )
 
+
     render(){
-        console.log(this.props.movies);
+        //console.log(this.props.login);
         const actors = this.props.movies.movieDetail ? this.props.movies.movieDetail.artists.filter( artist => {
             return artist.artistType === "Actor";
         }) : null;
         const reviews = this.props.movies.movieDetail ? this.props.movies.movieDetail.reviews : null;
+        
+        const { login } = this.props;
+
+        const logged = login.login_data ? login.login_data.logged : false;
+
+        const username = login.login_data && login.login_data.username ? login.login_data.username : null; 
+       
+        const idMovie = this.props.movies.movieDetail ? this.props.movies.movieDetail.idMovie : null ;
+        console.log(logged);
+        console.log(username);
+        console.log(idMovie);
+        
+        
         return(
             <div>
                 {this.movieTemplate(this.props.movies)}
                 <CastList actors={actors} />
+                { 
+                    logged ? 
+                        <ReviewForm username={username} idMovie={idMovie} />
+                    : null
+                }
                 <ReviewList reviews={reviews} />
             </div>
         );
@@ -63,7 +84,8 @@ class MovieContainer extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        movies: state.movies
+        movies: state.movies,
+        login: state.login
     }
 }
 
