@@ -26,6 +26,7 @@ class Header extends Component {
                 <Button size="small" component={Link} to="/films">films</Button>
                 <Button size="small" component={Link} to="/artists">artists</Button>
                 <Button size="small" component={Link} to="/cinemas">cinemas</Button>
+                <Button size="small" component={Link} to="/tvprograms">tv programs</Button>
                 {
                     login.status !== "User" && login.status !== "" ?  
                     <Button size="small" component={Link} to="/addMovie">Add Movie</Button> : null

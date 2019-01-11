@@ -1,6 +1,6 @@
 import React , { Component } from 'react';
 import axios from 'axios';
-import CinemaListItem from './CinemaListItem';
+import TvProgramListItem from './TvProgramListItem';
 import TextField from '@material-ui/core/TextField';
 
 
@@ -9,23 +9,22 @@ import TextField from '@material-ui/core/TextField';
 const URL = 'http://localhost:8080';
 
 
-class CinemaList extends Component {
+class TvProgramList extends Component {
 
     constructor(props){
         super(props);
 
         this.state = {
-            cinemas: [],
+            stations: [],
             filtered : [],
             searching : false
         }
     }
 
     filterArtists = (event) => {
-        let filtered = this.state.cinemas.filter(item => {
+        let filtered = this.state.stations.filter(item => {
           //toUpperCase, so user doesn't have to bother about Upper or Lower case sensitive titles.
-          const name = item.name + " " +item.city;
-          return name.toUpperCase().indexOf(event.target.value.toUpperCase()) > -1;
+          return item.name.toUpperCase().indexOf(event.target.value.toUpperCase()) > -1;
         });
     
         this.setState({
@@ -36,37 +35,34 @@ class CinemaList extends Component {
     }
 
     componentWillMount(){
-        this.getCinemas();
+        this.getStations();
     }
 
-    getCinemas = () => {
-        axios.get(`${URL}/allCinemas`)
+    getStations = () => {
+        axios.get(`${URL}/allStations`)
         .then(response => {
-            const cinemas = response.data;
-            this.setState({ cinemas });
+            const stations = response.data;
+            this.setState({ stations });
         })
     }
 
     render(){
-
-        
-        let cinemaList = this.state.filtered.length === 0 ? this.state.cinemas : this.state.filtered;
+        let stationList = this.state.filtered.length === 0 ? this.state.stations : this.state.filtered;
         if(this.state.filtered.length === 0 && this.state.searching === true) {
-          cinemaList = []
+          stationList = []
         }
-
-        const cinemas = cinemaList.map( cinema => {
+        const stations = stationList.map( station => {
             return(
-                <CinemaListItem key={cinema.idCinema} cinema={cinema} />
+                <TvProgramListItem key={station.name} station={station} />
             ) 
         });
         return(
             <div >
                 <TextField id="outlined-search" label="Search" margin="normal" varian="outlined" onChange={this.filterArtists}></TextField>
-                {cinemas}
+                {stations}
             </div>
         )
     }
 }
 
-export default CinemaList;
+export default TvProgramList;

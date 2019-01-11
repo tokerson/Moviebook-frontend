@@ -18,6 +18,8 @@ import AristList from './components/ArtistList';
 import CinemaList from './components/CinemaList';
 import FilmCinema from './components/FilmCinema';
 import AddMovieComponent from './components/AddMovieComponent';
+import TvProgramList from './components/TvProgramList';
+import TvProgramFilms from './components/TvProgramFilms';
 
 
 class App extends Component {
@@ -39,6 +41,9 @@ class App extends Component {
           <Route exact path="/cinemas" component={CinemaList} />
           <Route exact path="/addMovie" component={AddMovieComponent} />
           <Route exact path="/cinemas/:id" component={FilmCinema} />
+          <Route exact path="/tvprograms/" component={TvProgramList} />
+          <Route exact path="/tvprograms/:id" component={TvProgramFilms} />
+
 
           
 
