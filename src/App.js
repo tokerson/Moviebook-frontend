@@ -15,6 +15,8 @@ import EditorTools from './components/EditorTools';
 import MovieListContainer from './containers/MovieListContainer';
 import Movie from './components/Movie';
 import AristList from './components/ArtistList';
+import CinemaList from './components/CinemaList';
+import AddMovieComponent from './components/AddMovieComponent';
 
 
 class App extends Component {
@@ -33,6 +35,8 @@ class App extends Component {
           <Route exact path="/adminTools" component={AdminTools} />
           <Route exact path="/salesmanTools" component={SalesmanTools} />
           <Route exact path="/editorTools" component={EditorTools} />
+          <Route exact path="/cinemas" component={CinemaList} />
+          <Route exact path="/addMovie" component={AddMovieComponent} />
 
           
 

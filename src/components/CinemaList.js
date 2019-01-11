@@ -1,6 +1,6 @@
 import React , { Component } from 'react';
 import axios from 'axios';
-import ArtistListItem from './ArtistListItem';
+import CinemaListItem from './CinemaListItem';
 import TextField from '@material-ui/core/TextField';
 
 
@@ -9,22 +9,22 @@ import TextField from '@material-ui/core/TextField';
 const URL = 'http://localhost:8080';
 
 
-class AristList extends Component {
+class CinemaList extends Component {
 
     constructor(props){
         super(props);
 
         this.state = {
-            artists: [],
+            cinemas: [],
             filtered : [],
             searching : false
         }
     }
 
     filterArtists = (event) => {
-        let filtered = this.state.artists.filter(item => {
+        let filtered = this.state.cinemas.filter(item => {
           //toUpperCase, so user doesn't have to bother about Upper or Lower case sensitive titles.
-          const name = item.name + " " +item.surname;
+          const name = item.name + " " +item.city;
           return name.toUpperCase().indexOf(event.target.value.toUpperCase()) > -1;
         });
     
@@ -36,36 +36,36 @@ class AristList extends Component {
     }
 
     componentWillMount(){
-        this.getArtists();
+        this.getCinemas();
     }
 
-    getArtists = () => {
-        axios.get(`${URL}/allArtists`)
+    getCinemas = () => {
+        axios.get(`${URL}/allCinemas`)
         .then(response => {
-            const artists = response.data;
-            this.setState({ artists });
+            const cinemas = response.data;
+            this.setState({ cinemas });
         })
     }
 
     render(){
 
-        let artistList = this.state.filtered.length === 0 ? this.state.artists : this.state.filtered;
+        let cinemaList = this.state.filtered.length === 0 ? this.state.cinemas : this.state.filtered;
         if(this.state.filtered.length === 0 && this.state.searching === true) {
-          artistList = []
+          cinemaList = []
         }
 
-        const artists = artistList.map( artist => {
+        const cinemas = cinemaList.map( cinema => {
             return(
-                <ArtistListItem key={artist.id} artist={artist} />
+                <CinemaListItem key={cinema.idCinema} cinema={cinema} />
             ) 
         });
         return(
             <div >
                 <TextField id="outlined-search" label="Search" margin="normal" varian="outlined" onChange={this.filterArtists}></TextField>
-                {artists}
+                {cinemas}
             </div>
         )
     }
 }
 
-export default AristList;
+export default CinemaList;
