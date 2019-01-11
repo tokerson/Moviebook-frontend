@@ -5,11 +5,13 @@ import '../css/ListItem.css'
 const CinemaListItem = (props) => {
 
     return(
-        <div key={props.cinema.id} className="movieListItem" >
+        <NavLink key={props.cinema.idCinema} to={{
+            pathname: '/cinemas/'.concat(props.cinema.idCinema),
+        }} className="movieListItem" >
             <div className="moviePreview">
                 <h2 id="title">{props.cinema.name} {props.cinema.city}</h2>
             </div>
-        </div>
+        </NavLink>
     );
 }
 
