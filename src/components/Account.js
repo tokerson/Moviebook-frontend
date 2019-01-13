@@ -5,6 +5,10 @@ import Paper from '@material-ui/core/Paper';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router';
+
+
 const URL = 'http://localhost:8080';
 
 class Account extends Component {
@@ -16,31 +20,40 @@ class Account extends Component {
       }
     }
 
-    componentWillMount() {
+    componentDidMount() {
       this.getFilmsToWatch();
+      
     }
 
     getFilmsToWatch = () => {
       //need to change user5 to login after Kuba's change
-      axios.get(`${URL}/getFilmsToWatch/user5`)
+      console.log(this.props.login.login_data.username);
+
+      axios.get(`${URL}/getFilmsToWatch/${this.props.login.login_data.username}`)
       .then(response=>{
         const filmsToWatch = response.data;
         this.setState({ filmsToWatch});
       })
+      console.log(this.props.login.login_data.username);
     }
 
     render() {
 
+      const login = this.props.login;
       return(
         <div>
-          <h2>Films to watch:</h2>
-          <Paper style={{maxHeight: 500, overflow: 'auto'}}>
-            <List> 
-              <ListItem>
-              <MovieListItem className="list" movies={this.state.filmsToWatch}/>   
-              </ListItem>
-            </List>
-          </Paper>
+          { login.status !== "" ? 
+          <div>
+            <h2>Films to watch:</h2>
+            <Paper style={{maxHeight: 500, overflow: 'auto'}}>
+              <List> 
+                <ListItem>
+                <MovieListItem className="list" movies={this.state.filmsToWatch}/>   
+                </ListItem>
+              </List>
+            </Paper>
+          </div>
+          : <Redirect to="/home"/>}
         </div>
       )
     }
@@ -48,4 +61,9 @@ class Account extends Component {
 
 }
 
-export default Account;
+const mapStateToProps = (state) => {
+  return {
+    login: state.login
+  }
+}
+export default connect(mapStateToProps)(Account);
