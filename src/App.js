@@ -39,11 +39,10 @@ class App extends Component {
           <Route exact path="/salesmanTools" component={SalesmanTools} />
           <Route exact path="/editorTools" component={EditorTools} />
           <Route exact path="/cinemas" component={CinemaList} />
-          <Route exact path="/addMovie" component={AddMovieComponent} />
           <Route exact path="/cinemas/:id" component={FilmCinema} />
           <Route exact path="/tvprograms/" component={TvProgramList} />
           <Route exact path="/tvprograms/:id" component={TvProgramFilms} />
-
+          <Route exact path="/addMovie" component={AddMovieComponent} />
 
           
 

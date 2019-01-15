@@ -48,7 +48,7 @@ class Account extends Component {
             <Paper style={{maxHeight: 500, overflow: 'auto'}}>
               <List> 
                 <ListItem>
-                <MovieListItem className="list" movies={this.state.filmsToWatch}/>   
+                  <MovieListItem movies={this.state.filmsToWatch}/>   
                 </ListItem>
               </List>
             </Paper>

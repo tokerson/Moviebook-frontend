@@ -1,0 +1,7 @@
+.movieForm {
+    display: flex;
+    flex-direction: column;
+}
+.movieFormTextField {
+    margin-top: 100px
+}
