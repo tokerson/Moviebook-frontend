@@ -17,7 +17,8 @@ class ScrollAristList extends Component {
         this.state = {
             artists: [],
             filtered : [],
-            searching : false
+            searching : false,
+            chosen : []
         }
     }
 
@@ -48,6 +49,23 @@ class ScrollAristList extends Component {
         })
     }
 
+    chooseArtist = (id) => {
+        let chosen = this.state.chosen;
+        const index = chosen.indexOf(id);
+        if(index === -1) {
+           chosen.push(id); 
+        }
+        else{
+            chosen.splice(index, 1)
+        }
+
+        this.setState({
+            chosen: chosen
+        })
+
+        console.log(this.state.chosen)
+    }
+
     render(){
 
         let artistList = this.state.filtered.length === 0 ? this.state.artists : this.state.filtered;
@@ -57,7 +75,7 @@ class ScrollAristList extends Component {
 
         const artists = artistList.map( artist => {
             return(
-                <div key={artist.id}>
+                <div key={artist.id} onClick={() => this.chooseArtist(artist.id)}>
                     <ListItem >
                         <ScrollArtistListItem className="scrollListItem" artist={artist} />
                     </ListItem>
