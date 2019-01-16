@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { movieListAll } from '../actions';
 
-import MovieListItem from "../components/MovieListItem"
+import MovieList from "../components/MovieList"
 import TextField from '@material-ui/core/TextField';
 
 import "../css/MovieList.css"
@@ -45,7 +45,7 @@ class MovieListContainer extends Component {
     return (
       <div>
           <TextField id="outlined-search" label="Search" margin="normal" varian="outlined" onChange={this.filterMovies}></TextField>
-          <MovieListItem className="list" movies={movies}/>          
+          <MovieList className="list" movies={movies}/>          
       </div>
     );
   }

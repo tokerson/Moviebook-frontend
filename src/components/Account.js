@@ -1,14 +1,16 @@
 import React , { Component } from 'react';
 import axios from 'axios';
-import MovieListItem from './MovieListItem';
+import MovieList from './MovieList';
 import Paper from '@material-ui/core/Paper';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-
+import ReactScrollableList from 'react-scrollable-list'
+import { NavLink } from 'react-router-dom'
 
 
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router';
+import MovieListItem from './MovieListItem';
 
 
 const URL = 'http://localhost:8080';
@@ -48,7 +50,22 @@ class Account extends Component {
           <div>
             <h2>Films to watch:</h2>
             <Paper style={{maxHeight: 500, overflow: 'auto'}}>
-                  <MovieListItem movies={this.state.filmsToWatch}/>   
+                <List > 
+                  {
+                    this.state.filmsToWatch.map(movie => {
+                      return <div>
+                        <ListItem>
+                          <NavLink key={movie.idMovie} to={{
+                            pathname: '/films/'.concat(movie.idMovie + "/").concat(movie.title),
+                            }} style={{textDecoration:'none',width:"100%"}}>
+                          <MovieListItem movie={movie}/>   
+                          </NavLink>
+                        </ListItem>
+
+                      </div>
+                    })
+                  }
+                </List>
             </Paper>
           </div>
           : <Redirect to="/home"/>}
