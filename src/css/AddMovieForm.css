@@ -1,7 +1,13 @@
 .movieForm {
+    margin:auto;
+    width:60%;
     display: flex;
     flex-direction: column;
+    margin: auto;
 }
-.movieFormTextField {
-    margin-top: 100px
+
+.pictureWithForm {
+    display: flex;
+    flex-direction: row;
+
 }

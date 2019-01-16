@@ -13,7 +13,7 @@ const AdminTools = (props) => {
         login.status !== "Administrator" && login.status !== "Editor"
         ? <Redirect to="/home"/>
         : <div>
-           <Button size="large" component={Link} to="/addMovie">Add Movie</Button>
+           <Button size="large" component={Link} to="/addMovie" variant="outlined" >Add Movie</Button>
           </div>
       }
     </div>

@@ -5,16 +5,19 @@ import Paper from '@material-ui/core/Paper';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 
+
+
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router';
 
 
 const URL = 'http://localhost:8080';
 
+
 class Account extends Component {
     constructor(props){
       super(props);
-
+      
       this.state = {
         filmsToWatch: []
       }
@@ -38,7 +41,6 @@ class Account extends Component {
     }
 
     render() {
-
       const login = this.props.login;
       return(
         <div>
@@ -46,11 +48,7 @@ class Account extends Component {
           <div>
             <h2>Films to watch:</h2>
             <Paper style={{maxHeight: 500, overflow: 'auto'}}>
-              <List> 
-                <ListItem>
                   <MovieListItem movies={this.state.filmsToWatch}/>   
-                </ListItem>
-              </List>
             </Paper>
           </div>
           : <Redirect to="/home"/>}
@@ -66,4 +64,6 @@ const mapStateToProps = (state) => {
     login: state.login
   }
 }
+
+
 export default connect(mapStateToProps)(Account);
