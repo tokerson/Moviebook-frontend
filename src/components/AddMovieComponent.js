@@ -9,10 +9,9 @@ import MenuItem from '@material-ui/core/MenuItem';
 import InputLabel from '@material-ui/core/InputLabel';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
 import FormControl from '@material-ui/core/FormControl';
-import Paper from '@material-ui/core/Paper';
 import { withStyles } from '@material-ui/core/styles';
 import ReactDOM from 'react-dom';
-import ArtistList from './ArtistList';
+import ScrollArtistList from './ScrollArtistList';
 
 
 // take genres from database
@@ -31,7 +30,8 @@ class AddMovieComponent extends Component {
 
     state={
         picture:'',
-        genres:[]
+        genres:[],
+        labelWidth:0
     }
 
     componentDidMount() {
@@ -105,9 +105,7 @@ class AddMovieComponent extends Component {
                     </Select>
                 </FormControl>
 
-                <Paper style={{maxHeight: 500, overflow: 'auto'}}>
-                <ArtistList />
-                </Paper>
+                <ScrollArtistList />
                 <Button variant="outlined"type="submit" margin="dense">Add movie</Button>
                 
                 
