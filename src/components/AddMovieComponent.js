@@ -66,7 +66,9 @@ class AddMovieComponent extends Component {
     formRender = () => {
         const { classes } = this.props;
         return <div className="pictureWithForm">
-            <img className="picture" src={this.state.picture} alt=""></img>
+            <div className="pictureWrapper">
+                <img className="picture" src={this.state.picture} alt=""></img>
+            </div>
             <form onSubmit={this.handleSubmit} className="movieForm">
             
                 <TextField type="text" id="title" name="title" label="Movie title" variant="outlined"  margin="dense"></TextField>
