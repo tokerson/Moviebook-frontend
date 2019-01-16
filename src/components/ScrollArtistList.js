@@ -18,7 +18,8 @@ class ScrollAristList extends Component {
             artists: [],
             filtered : [],
             searching : false,
-            chosen : []
+            chosenActors : [],
+            roles: []
         }
     }
 
@@ -49,21 +50,46 @@ class ScrollAristList extends Component {
         })
     }
 
-    chooseArtist = (id) => {
-        let chosen = this.state.chosen;
-        const index = chosen.indexOf(id);
-        if(index === -1) {
-           chosen.push(id); 
+    chooseActor = (id) => {
+        let chosen = this.state.chosenActors;
+      
+        let wasChosen = false;
+        for (let i = 0; i < chosen.length ; i++) {
+            if (chosen[i].id === id) {
+                chosen.splice(i, 1);
+                wasChosen = true;
+            }
         }
-        else{
-            chosen.splice(index, 1)
+        if(!wasChosen) {
+            chosen.push({
+                id: id,
+                role: ""
+            })
         }
 
         this.setState({
-            chosen: chosen
+            chosenActors: chosen
         })
 
-        console.log(this.state.chosen)
+        console.log(this.state.chosenActors)
+    }
+
+    setArtistRole = (event) => {
+
+        let chosen = this.state.chosenActors;
+        let id = parseInt(event.target.id);
+        for (let i = 0; i < chosen.length ; i++) {
+            if (chosen[i].id === id) {
+                chosen[i].role = event.target.value;
+            }
+        }
+
+        this.setState({
+            chosenActors: chosen
+        })
+
+        console.log(this.state.chosenActors)
+
     }
 
     render(){
@@ -74,10 +100,22 @@ class ScrollAristList extends Component {
         }
 
         const artists = artistList.map( artist => {
+            let chosen = false;
+            for (let i = 0; i < this.state.chosenActors.length; i++) {
+                if (this.state.chosenActors[i].id === artist.id) {
+                    chosen = true;
+                }
+            }
             return(
-                <div key={artist.id} onClick={() => this.chooseArtist(artist.id)}>
+                <div key={artist.id}  >
                     <ListItem >
-                        <ScrollArtistListItem className="scrollListItem" artist={artist} />
+                        <div style={{width:"100%"}} onClick={() => this.chooseActor(artist.id)}>
+                            <ScrollArtistListItem className="scrollListItem" artist={artist} />
+                        </div>
+                            <TextField disabled={!chosen} type="text" id={artist.id.toString()} name="role" label="Played as" variant="outlined"  margin="dense" onChange={this.setArtistRole} ></TextField>
+                        
+                        
+                        
                     </ListItem>
                 </div>
                 
@@ -85,8 +123,8 @@ class ScrollAristList extends Component {
         });
         return(
             <div >
-                <TextField id="outlined-search" label="Search" margin="normal" varian="outlined" onChange={this.filterArtists} style={{margin:"auto"}}></TextField>
-                <Paper style={{maxHeight: 500, overflow: 'auto'}}>
+                <TextField type="text" id="searchActor" name="searchActor" label="Find Actor" variant="outlined"  margin="dense" onChange={this.filterArtists}></TextField>
+                <Paper style={{maxHeight: 300, overflow: 'auto'}}>
                     <List>{artists}</List>
                 </Paper>
                 
