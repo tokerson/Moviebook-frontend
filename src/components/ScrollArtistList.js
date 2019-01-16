@@ -101,18 +101,20 @@ class ScrollAristList extends Component {
 
         const artists = artistList.map( artist => {
             let chosen = false;
+            let value="";
             for (let i = 0; i < this.state.chosenActors.length; i++) {
                 if (this.state.chosenActors[i].id === artist.id) {
                     chosen = true;
+                    value=this.state.chosenActors[i].role;
                 }
             }
             return(
                 <div key={artist.id}  >
                     <ListItem >
                         <div style={{width:"100%"}} onClick={() => this.chooseActor(artist.id)}>
-                            <ScrollArtistListItem className="scrollListItem" artist={artist} />
+                            <ScrollArtistListItem selected={chosen} artist={artist} />
                         </div>
-                            <TextField disabled={!chosen} type="text" id={artist.id.toString()} name="role" label="Played as" variant="outlined"  margin="dense" onChange={this.setArtistRole} ></TextField>
+                            <TextField disabled={!chosen} value={value} type="text" id={artist.id.toString()} name="role" label="Played as" variant="outlined"  margin="dense" onChange={this.setArtistRole} ></TextField>
                         
                         
                         
