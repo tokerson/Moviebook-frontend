@@ -5,7 +5,9 @@ import '../css/ListItem.css'
 const ArtistListItem = (props) => {
 
     return(
-        <div key={props.artist.id} className="movieListItem" >
+        <NavLink key={props.artist.id} to={{
+            pathname: '/artists/'.concat(props.artist.id)
+        }} className="movieListItem" >
 
             <div className="listItemAvatar">
                 <img src={props.artist.pictureUrl} alt={"picture" + props.artist.name + props.artist.surname}></img>
@@ -14,7 +16,7 @@ const ArtistListItem = (props) => {
                 <h2 id="title">{props.artist.name} {props.artist.surname}</h2>
             </div>
 
-        </div>
+        </NavLink>
     );
 }
 

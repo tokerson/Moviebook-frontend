@@ -40,7 +40,7 @@ class AristList extends Component {
     }
 
     getArtists = () => {
-        axios.get(`${URL}/allArtists`)
+        axios.get(`${URL}/allBasicArtists`)
         .then(response => {
             const artists = response.data;
             this.setState({ artists });
