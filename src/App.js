@@ -21,6 +21,7 @@ import TvProgramList from './components/TvProgramList';
 import TvProgramFilms from './components/TvProgramFilms';
 import Account from './components/Account';
 import Artist from './components/Artist';
+import AddArtist from './components/AddArtistComponent';
 
 
 class App extends Component {
@@ -45,6 +46,7 @@ class App extends Component {
           <Route exact path="/tvprograms/:id" component={TvProgramFilms} />
           <Route exact path="/addMovie" component={AddMovieComponent} />
           <Route exact path="/artists/:id" component={Artist} />
+          <Route exact path="/addArtist/" component={AddArtist} />
 
           
 

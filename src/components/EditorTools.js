@@ -13,6 +13,7 @@ const EditorTools = (props) => {
         ? <Redirect to="/home"/>
         : <div>
            <Button size="large" component={Link} to="/addMovie" variant="outlined" >Add Movie</Button>
+           <Button size="large" component={Link} to="/addArtist" variant="outlined" >Add Artist</Button>
           </div>
       }
     </div>
