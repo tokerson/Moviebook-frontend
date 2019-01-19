@@ -12,9 +12,28 @@ import CastList from '../components/CastList';
 import ReviewList from '../components/ReviewList';
 import ReviewForm from '../components/ReviewForm';
 
+import InputLabel from '@material-ui/core/InputLabel';
+import OutlinedInput from '@material-ui/core/OutlinedInput';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+import MenuItem from '@material-ui/core/MenuItem';
+
 import { MdStar } from 'react-icons/md';
 
 const URL = 'http://localhost:8080';
+
+const rates = [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+]
 
 class MovieContainer extends Component {
     
@@ -25,7 +44,8 @@ class MovieContainer extends Component {
         super(props);
 
         this.state = {
-            added: false
+            added: false,
+            rate: 0
         }
     }
 
@@ -85,8 +105,23 @@ class MovieContainer extends Component {
              })
     }
 
+    changeRate = (event) => {
 
-    movieTemplate = (data) => (
+        this.setState({
+            rate: event.target.value
+        })
+    }
+
+    handleRateMovie = (event) => {
+        if(this.state.rate > 0 )
+            console.log("Oceniono na " + this.state.rate);
+        else {
+            console.log("Nie można ocenić bez oceny");
+        }
+    }
+
+
+    movieTemplate = (data, logged) => (
             data.movieDetail ? 
                 <div className="movieDetailsWrapper">
                     <img className="picture" src={data.movieDetail.pictureUrl} alt="coverage of this movie"></img>
@@ -94,6 +129,22 @@ class MovieContainer extends Component {
                         <div className="rating">
                             <h2 className="movie-title" >{data.movieDetail.title} </h2>
                             <h3><MdStar/>{data.movieDetail.rating || 0} / 10 </h3>
+                            { logged ?
+                            <div>
+                                <FormControl margin="dense" style={{ width: "50px", marginLeft:"5px" }}>
+                                    <Select  value={this.state.rate} onChange={this.changeRate} label="Type" id="type" name="type" >
+                                        {rates.map(type => (
+                                            <MenuItem key={type} value={type} >
+                                                {type}
+                                            </MenuItem>
+                                        ))}
+                                    </Select>
+                                </FormControl>    
+                                {this.state.rate > 0 ?
+                                <Button variant="outlined" onClick={this.handleRateMovie} styles={{marginBottom:"10px", backgroundColor:"white", border:"black"}}>Rate!</Button> 
+                                :null}
+                            </div>
+                            : null}           
                         </div>
                         <p> {data.movieDetail.description}</p>
                         <p><b>Premiere:</b> {data.movieDetail.dateOfPremiere}</p>
@@ -133,7 +184,7 @@ class MovieContainer extends Component {
     
         return(
             <div>
-                {this.movieTemplate(this.props.movies)}
+                {this.movieTemplate(this.props.movies, logged)}
                 <CastList actors={actors} />
                 { 
                     logged ? 
