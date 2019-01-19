@@ -7,7 +7,7 @@
     color: black;
     text-decoration: none;
     transition: transform .2s;
-    width:50%;
+    width:90%;
 }
 
 .scrollListItem:hover {
@@ -25,7 +25,7 @@
     color: black;
     text-decoration: none;
     transition: transform .2s;
-    width:50%;
+    width:90%;
     box-shadow: 0 0 2px 1px darkslategray;
     cursor: pointer;
 }
