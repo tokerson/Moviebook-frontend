@@ -13,10 +13,13 @@ import ReviewList from '../components/ReviewList';
 import ReviewForm from '../components/ReviewForm';
 import TVTransmissions from '../components/TVTransmissions'
 import CinemaRepertoire from '../components/CinemaRepertoire'
+import IssueDialog from '../components/IssueDialog'
 
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
+import { Dialog, DialogTitle, DialogContent } from '@material-ui/core';
+
 
 
 import { MdStar } from 'react-icons/md';
@@ -48,7 +51,8 @@ class MovieContainer extends Component {
             added: false,
             rate: 0,
             rated: false,
-            sentRate:0
+            sentRate:0,
+            openIssue: false
         }
     }
 
@@ -129,7 +133,9 @@ class MovieContainer extends Component {
     }
 
     handleAddIssue = (event) => {
-
+        this.setState({
+            openIssue: true
+        })
     }
 
 
@@ -208,8 +214,6 @@ class MovieContainer extends Component {
             : null
     )
 
-    
-
     render(){
         const actors = this.props.movies.movieDetail ? this.props.movies.movieDetail.artists.filter( artist => {
             return artist.artistType === "Actor";
@@ -229,6 +233,7 @@ class MovieContainer extends Component {
         return(
             <div>
                 {this.movieTemplate(this.props.movies, logged)}
+                <IssueDialog open={this.state.openIssue} onClose={()=>this.setState({openIssue:false})} username={username} idMovie={idMovie} />
                 <CastList actors={actors} />
                 <TVTransmissions transmissions={transmissions}/>
                 <CinemaRepertoire  repertoire={repertoire}/>

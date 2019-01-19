@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
-import { Dialog } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
 import { Field, reduxForm } from 'redux-form';
 
@@ -10,7 +9,7 @@ import { clickLogin, closeLogin, verifyData, logUser, failedLogin, closeRegister
 
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogActions from '@material-ui/core/DialogActions';
-import { DialogTitle, DialogContent } from '@material-ui/core';
+import { Dialog, DialogTitle, DialogContent } from '@material-ui/core';
 
 
 class LoginDialog extends Component {
