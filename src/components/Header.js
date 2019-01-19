@@ -28,8 +28,8 @@ class Header extends Component {
                 <Button size="small" component={Link} to="/cinemas">cinemas</Button>
                 <Button size="small" component={Link} to="/tvprograms">tv programs</Button>
                 {
-                    login.status === "Administrator" ?  
-                    <Button size="small" component={Link} to="/adminTools">Admin Tools</Button> : null
+                    login.status === "Editor" ?  
+                    <Button size="small" component={Link} to="/editorTools">Editor Tools</Button> : null
                 }
                 {
                     login.status == "User" ?  
