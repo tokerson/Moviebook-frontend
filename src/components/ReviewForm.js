@@ -32,7 +32,6 @@ class ReviewForm extends Component {
     }   
 
     render(){
-        console.log(this.state.review)
         return(
             <div>
                 <h2>Write your review</h2>

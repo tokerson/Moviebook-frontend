@@ -11,12 +11,13 @@ import axios from 'axios';
 import CastList from '../components/CastList';
 import ReviewList from '../components/ReviewList';
 import ReviewForm from '../components/ReviewForm';
+import TVTransmissions from '../components/TVTransmissions'
+import CinemaRepertoire from '../components/CinemaRepertoire'
 
-import InputLabel from '@material-ui/core/InputLabel';
-import OutlinedInput from '@material-ui/core/OutlinedInput';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
+
 
 import { MdStar } from 'react-icons/md';
 
@@ -46,7 +47,8 @@ class MovieContainer extends Component {
         this.state = {
             added: false,
             rate: 0,
-            rated: false
+            rated: false,
+            sentRate:0
         }
     }
 
@@ -118,17 +120,31 @@ class MovieContainer extends Component {
              .then( response => {
                     if(response.data === "Successful") {
                         this.setState({
-                            rated:true
+                            rated:true,
+                            sentRate: this.state.rate
                         })
                     }
+
              })
+    }
+
+    handleAddIssue = (event) => {
+
     }
 
 
     movieTemplate = (data, logged) => (
             data.movieDetail ? 
                 <div className="movieDetailsWrapper">
+                    <div>
                     <img className="picture" src={data.movieDetail.pictureUrl} alt="coverage of this movie"></img>
+                    {logged ?
+                    <div style={{display:"flex",flexDirection:"column", justifyContent:"center"}}>
+                        <p style={{margin:"auto",fontSize:"10px"}}><i>Can you see any mistakes?</i></p>
+                        <Button size="small"  onClick={this.handleAddIssue} >Let us know!</Button> 
+                    </div>
+                    : null }
+                    </div>
                     <div className="movieDetails">
                         <div className="rating">
                             <h2 className="movie-title" >{data.movieDetail.title} </h2>
@@ -150,9 +166,12 @@ class MovieContainer extends Component {
                             </div>
                             : null}           
                         </div>
-                        { logged && this.state.rated ?
-                            <p><i>You have rated this movie on {this.state.rate}. <br></br>You can change your rate anytime</i></p>
-                        : null}
+
+                        { logged && this.state.sentRate ?
+                            <p><i>You have rated this movie on {this.state.sentRate}. <br></br>You can change your rate anytime</i></p>
+                            : null
+                        }
+                        
 
                         <p> {data.movieDetail.description}</p>
                         <p><b>Premiere:</b> {data.movieDetail.dateOfPremiere}</p>
@@ -163,9 +182,24 @@ class MovieContainer extends Component {
                         <p><b>Music:</b> {data.movieDetail.artists.filter( item => { return item.artistType === "Music"}).map(item => { return item.name + " " + item.surname}).join(", ")}</p>
                         <p><b>Box Office:</b> {data.movieDetail.boxOffice} $</p>
                         <p><b>Production:</b> {data.movieDetail.country}</p>
+                    
+                                <p><b>Prizes:</b></p>
+                                <ul > 
+                                {
+                                    data.movieDetail.prizes.map(prize => {
+                                    return <div key={prize.idPrize}>
+                                        <li>
+                                            <p><b>{prize.prizeName} </b>for {prize.whatFor} in {prize.date}</p>
+                                        </li>
+                                    </div>
+                                    })
+                                }
+                                </ul>
+                            
+                         
                         { this.props.login.login_data && this.props.login.login_data.username ? 
-                          ( this.state.added ? <Button onClick={this.removeFromToWatch} styles={{marginBottom:"10px", backgroundColor:"white", border:"black"}}>Remove from your Watchlist !</Button>
-                            : <Button onClick={this.addToWatch} styles={{marginBottom:"10px", backgroundColor:"white", border:"black"}}>Add to Watch !</Button>
+                          ( this.state.added ? <Button variant="outlined"onClick={this.removeFromToWatch} styles={{marginBottom:"10px", backgroundColor:"white", border:"black"}}>Remove from your Watchlist !</Button>
+                            : <Button variant="outlined" onClick={this.addToWatch} styles={{marginBottom:"10px", backgroundColor:"white", border:"black"}}>Add to Watch !</Button>
                           ) : null }   
 
                         
@@ -189,11 +223,15 @@ class MovieContainer extends Component {
         const username = login.login_data && login.login_data.username ? login.login_data.username : null; 
        
         const idMovie = this.props.movies.movieDetail ? this.props.movies.movieDetail.idMovie : null ;
+        const transmissions = this.props.movies.movieDetail ? this.props.movies.movieDetail.transmitions : null ;
+        const repertoire = this.props.movies.movieDetail ? this.props.movies.movieDetail.shows : null ;
 
         return(
             <div>
                 {this.movieTemplate(this.props.movies, logged)}
                 <CastList actors={actors} />
+                <TVTransmissions transmissions={transmissions}/>
+                <CinemaRepertoire  repertoire={repertoire}/>
                 { 
                     logged ? 
                         <ReviewForm username={username} idMovie={idMovie} />
