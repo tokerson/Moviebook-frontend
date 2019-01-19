@@ -52,7 +52,8 @@ class MovieContainer extends Component {
             rate: 0,
             rated: false,
             sentRate:0,
-            openIssue: false
+            openIssue: false,
+            change : false
         }
     }
 
@@ -214,7 +215,17 @@ class MovieContainer extends Component {
             : null
     )
 
+     likeReview = (id) => {
+        axios.post(`${URL}/addLikeToReview/${id}/${this.props.login.login_data.username}`)
+             .then( response => {
+                if(response.data ==="Successful") {
+                    this.props.movieDetail(this.props.match.params.id, this.props.match.params.title);
+                }
+             })
+      }
+
     render(){
+        console.log("render");
         const actors = this.props.movies.movieDetail ? this.props.movies.movieDetail.artists.filter( artist => {
             return artist.artistType === "Actor";
         }) : null;
@@ -239,10 +250,12 @@ class MovieContainer extends Component {
                 <CinemaRepertoire  repertoire={repertoire}/>
                 { 
                     logged ? 
-                        <ReviewForm username={username} idMovie={idMovie} />
+                        <ReviewForm callback={() => {
+                            this.props.movieDetail(this.props.match.params.id, this.props.match.params.title);
+                        }} username={username} idMovie={idMovie} />
                     : null
                 }
-                <ReviewList reviews={reviews} />
+                <ReviewList username={username} callback={this.likeReview} reviews={reviews} />
             </div>
         );
     }
