@@ -225,7 +225,6 @@ class MovieContainer extends Component {
       }
 
     render(){
-        console.log("render");
         const actors = this.props.movies.movieDetail ? this.props.movies.movieDetail.artists.filter( artist => {
             return artist.artistType === "Actor";
         }) : null;

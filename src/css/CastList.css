@@ -13,12 +13,11 @@
     display: flex;
     flex-direction: row;
     align-items: center; 
-    margin-top: 5px;
-    margin-bottom: 5px;
+    margin: 10px 5px 20px 5px;
 }
 
-.castItemWrapper :hover {
-    transform: scale(1.05);
+.castWrapper :hover {
+    transform: scale(1.01);
     cursor: pointer;
 }
 
