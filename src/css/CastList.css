@@ -17,6 +17,11 @@
     margin-bottom: 5px;
 }
 
+.castItemWrapper :hover {
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
 .actorAvatar {
     overflow: hidden;
     height: 100px;
