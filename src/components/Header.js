@@ -36,7 +36,7 @@ class Header extends Component {
                     <Button size="small" component={Link} to="/editorTools">Editor Tools</Button> : null
                 }
                 {
-                    login.status == "User" ?  
+                    login.status === "User" ?  
                     <Button size="small" component={Link} to="/account">Account</Button> : null
                 }
             </Toolbar>

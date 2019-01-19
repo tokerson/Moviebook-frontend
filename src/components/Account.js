@@ -31,15 +31,11 @@ class Account extends Component {
     }
 
     getFilmsToWatch = () => {
-      //need to change user5 to login after Kuba's change
-      console.log(this.props.login.login_data.username);
-
       axios.get(`${URL}/getFilmsToWatch/${this.props.login.login_data.username}`)
       .then(response=>{
         const filmsToWatch = response.data;
         this.setState({ filmsToWatch});
       })
-      console.log(this.props.login.login_data.username);
     }
 
     render() {
@@ -53,9 +49,9 @@ class Account extends Component {
                 <List > 
                   {
                     this.state.filmsToWatch.map(movie => {
-                      return <div>
+                      return <div key={movie.idMovie}>
                         <ListItem>
-                          <NavLink key={movie.idMovie} to={{
+                          <NavLink to={{
                             pathname: '/films/'.concat(movie.idMovie + "/").concat(movie.title),
                             }} style={{textDecoration:'none',width:"100%"}}>
                           <MovieListItem movie={movie}/>   
