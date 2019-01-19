@@ -45,7 +45,8 @@ class MovieContainer extends Component {
 
         this.state = {
             added: false,
-            rate: 0
+            rate: 0,
+            rated: false
         }
     }
 
@@ -113,11 +114,14 @@ class MovieContainer extends Component {
     }
 
     handleRateMovie = (event) => {
-        if(this.state.rate > 0 )
-            console.log("Oceniono na " + this.state.rate);
-        else {
-            console.log("Nie można ocenić bez oceny");
-        }
+        axios.post(`${URL}/changeRating/${this.props.login.login_data.username}/${this.props.movies.movieDetail.idMovie}/${this.state.rate}`)
+             .then( response => {
+                    if(response.data === "Successful") {
+                        this.setState({
+                            rated:true
+                        })
+                    }
+             })
     }
 
 
@@ -146,6 +150,10 @@ class MovieContainer extends Component {
                             </div>
                             : null}           
                         </div>
+                        { logged && this.state.rated ?
+                            <p><i>You have rated this movie on {this.state.rate}. <br></br>You can change your rate anytime</i></p>
+                        : null}
+
                         <p> {data.movieDetail.description}</p>
                         <p><b>Premiere:</b> {data.movieDetail.dateOfPremiere}</p>
                         <p><b>Genre:</b> {data.movieDetail.genres.join(", ")}</p>
@@ -166,6 +174,7 @@ class MovieContainer extends Component {
             : null
     )
 
+    
 
     render(){
         const actors = this.props.movies.movieDetail ? this.props.movies.movieDetail.artists.filter( artist => {
@@ -181,7 +190,6 @@ class MovieContainer extends Component {
        
         const idMovie = this.props.movies.movieDetail ? this.props.movies.movieDetail.idMovie : null ;
 
-    
         return(
             <div>
                 {this.movieTemplate(this.props.movies, logged)}
