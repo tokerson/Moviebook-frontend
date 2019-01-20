@@ -128,8 +128,24 @@ class ScrollAristList extends Component {
         this.props.callback(this.state.chosenActors);
     }
 
+    takeActors = ()=>{
+        this.setState({
+            chosenActors: this.props.chosenActors
+        })
+    }
+
+    componentDidUpdate(prevProps) {
+        if(this.props.chosenActors !== prevProps.chosenActors) {
+            this.setState({
+                chosenActors : this.props.chosenActors
+            })
+        }
+    }
+
     render(){
         
+        console.log(this.props.chosenActors)
+        console.log(this.state.chosenActors)
         let artistList = this.state.filtered.length === 0 ? this.state.artists : this.state.filtered;
         if(this.state.filtered.length === 0 && this.state.searching === true) {
           artistList = []
@@ -148,7 +164,8 @@ class ScrollAristList extends Component {
             for (let i = 0; i < this.state.chosenActors.length; i++) {
                 if (this.state.chosenActors[i].id === artist.id) {
                     chosen = true;
-                    value=this.state.chosenActors[i].role;
+                    value=this.state.chosenActors[i].role ? this.state.chosenActors[i].role : "" ;
+                    
                 }
             }
             return(
