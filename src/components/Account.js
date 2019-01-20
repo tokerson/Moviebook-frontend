@@ -1,10 +1,8 @@
 import React , { Component } from 'react';
 import axios from 'axios';
-import MovieList from './MovieList';
 import Paper from '@material-ui/core/Paper';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import ReactScrollableList from 'react-scrollable-list'
 import { NavLink } from 'react-router-dom'
 
 

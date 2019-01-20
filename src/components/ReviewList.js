@@ -1,11 +1,6 @@
 import React from 'react';
 import '../css/ReviewList.css';
 import { FaThumbsUp } from 'react-icons/fa';
-import axios from 'axios';
-
-const URL = 'http://localhost:8080';
-
-
 
 const ReviewList = (props) => {
 

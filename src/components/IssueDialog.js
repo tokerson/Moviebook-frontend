@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import { Dialog, DialogTitle, DialogContent } from '@material-ui/core';
-import DialogContentText from '@material-ui/core/DialogContentText';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import axios from 'axios';

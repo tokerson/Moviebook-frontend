@@ -1,6 +1,5 @@
 import React , { Component } from 'react';
 import Axios from 'axios';
-import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import MovieListItem from './MovieListItem';
 import { NavLink } from 'react-router-dom'

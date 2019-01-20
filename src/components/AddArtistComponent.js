@@ -19,8 +19,9 @@ class AddArtistComponent extends Component {
 
         const data = new FormData(event.target);
         let url = encodeURIComponent(data.get('pictureUrl'));
-        console.log(url);
-        Axios.get(`${URL}/updateArtist/-1/${data.get('name')}/${data.get('surname')}/${data.get('origin')}/${data.get('date')}/${url}`)
+        var changed = url.replace(/%/g, "_");
+        
+        Axios.get(`${URL}/updateArtist/-1/${data.get('name')}/${data.get('surname')}/${data.get('origin')}/${data.get('date')}/${changed}`)
         .then(response => {
             console.log(response);
         })
@@ -33,7 +34,6 @@ class AddArtistComponent extends Component {
     }
 
     formRender = () => {
-        const { classes } = this.props;
         return <div className="pictureWithForm">
             <div className="pictureWrapper">
                 <img className="picture" src={this.state.picture} alt=""></img>
