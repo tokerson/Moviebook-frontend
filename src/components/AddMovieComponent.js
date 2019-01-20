@@ -13,14 +13,10 @@ import { withStyles } from '@material-ui/core/styles';
 import ReactDOM from 'react-dom';
 import ScrollArtistList from './ScrollArtistList';
 
+import axios from 'axios';
 
-// take genres from database
-const genres = [
-    'Drama',
-    'Comedy',
-    'Horror',
-    'Romance'
-  ];
+const URL = 'http://localhost:8080';
+
 
 const styles = {
 
@@ -32,14 +28,25 @@ class AddMovieComponent extends Component {
         picture:'',
         genres:[],
         labelWidth:0,
-        chosenArtists:[]
+        chosenArtists:[],
+        allGenres:[]
     }
 
     componentDidMount() {
+        this.getGenres();
         this.setState({
           labelWidth: ReactDOM.findDOMNode(this.InputLabelRef).offsetWidth,
         });
       }
+
+    getGenres = () => {
+        axios.get(`${URL}/getAllGenres`)
+            .then(response => {
+                this.setState({
+                    allGenres: response.data
+                })
+            })
+    }
 
     handleSubmit= (event)=>{
         event.preventDefault();
@@ -105,9 +112,9 @@ class AddMovieComponent extends Component {
                         id="outlined-genre-simple"
                       />
                     }>
-                        {genres.map(genre => (
-                            <MenuItem key={genre} value={genre} >
-                                {genre}
+                        {this.state.allGenres.map(genre => (
+                            <MenuItem key={genre.name} value={genre.name} >
+                                {genre.name}
                             </MenuItem>
                         ))}
                     </Select>

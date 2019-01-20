@@ -15,14 +15,6 @@ import "../css/MovieList.css"
 
 const URL = 'http://localhost:8080';
 
-const genres =[
-  'Drama',
-  'Romance',
-  'Action',
-  'Comedy',
-  'Adventure'
-]
-
 class MovieListContainer extends Component {
 
   //this function filters json, looking for a title corresponding to given word
@@ -31,13 +23,24 @@ class MovieListContainer extends Component {
     this.props.movieListAll().then( () => {this.setState({
       movies:this.props.movies.movieList
     })});
+    this.getGenres();
   }
 
   state = {
     movies:[],
     filtered : [],
     searching : false,
-    genre:""
+    genre:"",
+    genres: []
+  }
+
+  getGenres = () => {
+      axios.get(`${URL}/getAllGenres`)
+           .then( response => {
+             this.setState({
+               genres: response.data
+             })
+           })
   }
 
   filterMovies = (event) => {
@@ -89,9 +92,9 @@ class MovieListContainer extends Component {
             <InputLabel htmlFor="age-simple">Genre</InputLabel>
             <Select value={this.state.genre} onChange={this.showMoviesOfGenre} label="Genre" id="genre" name="genre" >
               <MenuItem value="None">None</MenuItem>
-              {genres.map(genre => (
-                <MenuItem key={genre} value={genre} >
-                  {genre}
+              {this.state.genres.map(genre => (
+                <MenuItem key={genre.name} value={genre.name} >
+                  {genre.name}
                 </MenuItem>
               ))}
             </Select>
