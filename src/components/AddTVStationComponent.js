@@ -10,7 +10,7 @@ import { Dialog, DialogTitle } from '@material-ui/core';
 
 const URL = 'http://localhost:8080';
 
-class AddCinemaComponent extends Component {
+class AddTVStationComponent extends Component {
 
     state={
         open: false,
@@ -66,4 +66,4 @@ const mapStateToProps = (state) => {
         login: state.login
     }
 }
-export default connect(mapStateToProps)(AddCinemaComponent);
+export default connect(mapStateToProps)(AddTVStationComponent);

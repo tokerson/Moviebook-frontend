@@ -5,7 +5,7 @@ import TextField from '@material-ui/core/TextField';
 import { Button } from '@material-ui/core';
 import '../css/AddMovieForm.css';
 import Axios from 'axios';
-import { Dialog, DialogTitle, DialogContent } from '@material-ui/core';
+import { Dialog, DialogTitle } from '@material-ui/core';
 
 
 const URL = 'http://localhost:8080';
