@@ -31,7 +31,8 @@ class AddMovieComponent extends Component {
     state={
         picture:'',
         genres:[],
-        labelWidth:0
+        labelWidth:0,
+        chosenArtists:[]
     }
 
     componentDidMount() {
@@ -65,7 +66,14 @@ class AddMovieComponent extends Component {
         })
     }
 
+    handleChooseArtist = (chosenArtists) => {
+        this.setState({
+            chosenArtists : chosenArtists
+        })
+    }
+
     formRender = () => {
+        console.log(this.state.chosenArtists)
         const { classes } = this.props;
         return <div className="pictureWithForm">
             <div className="pictureWrapper">
@@ -105,7 +113,7 @@ class AddMovieComponent extends Component {
                     </Select>
                 </FormControl>
 
-                <ScrollArtistList />
+                <ScrollArtistList callback={this.handleChooseArtist}/>
                 <Button variant="outlined"type="submit" margin="dense">Add movie</Button>
                 
                 

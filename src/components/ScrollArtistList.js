@@ -85,7 +85,7 @@ class ScrollAristList extends Component {
             chosenActors: chosen
         })
 
-        // console.log(this.state.chosenActors)
+        this.props.callback(this.state.chosenActors);
     }
 
     setArtistRole = (event) => {
@@ -102,7 +102,7 @@ class ScrollAristList extends Component {
             chosenActors: chosen
         })
 
-        console.log(this.state.chosenActors)
+        this.props.callback(this.state.chosenActors);
 
     }
 
@@ -119,7 +119,7 @@ class ScrollAristList extends Component {
             chosenActors: artists
         });
 
-        console.log(this.state.chosenActors)
+        this.props.callback(this.state.chosenActors);
     }
 
     render(){

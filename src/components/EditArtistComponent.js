@@ -1,16 +1,18 @@
-import React , { Component } from 'react';
-import axios from 'axios';
-import ArtistListItem from './ArtistListItem';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import {  Redirect } from 'react-router'
 import TextField from '@material-ui/core/TextField';
+import { Button } from '@material-ui/core';
+import '../css/AddMovieForm.css';
+import axios from 'axios';
+import { Dialog, DialogTitle } from '@material-ui/core';
+import ArtistListItem from './ArtistListItem'
 import { NavLink } from 'react-router-dom'
-
-
 
 
 const URL = 'http://localhost:8080';
 
-
-class AristList extends Component {
+class EditArtistComponent extends Component {
 
     constructor(props){
         super(props);
@@ -58,7 +60,7 @@ class AristList extends Component {
         const artists = artistList.map( artist => {
             return(
                 <NavLink key={artist.id} to={{
-                    pathname: '/artists/'.concat(artist.id)
+                    pathname: '/editArtist/'.concat(artist.id)
                 }} style={{textDecoration:"none", color:"black"}}>
                     <ArtistListItem artist={artist} />
                 </NavLink>
@@ -73,4 +75,9 @@ class AristList extends Component {
     }
 }
 
-export default AristList;
+const mapStateToProps = (state) => {
+    return {
+        login: state.login
+    }
+}
+export default connect(mapStateToProps)(EditArtistComponent);

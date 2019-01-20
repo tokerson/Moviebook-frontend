@@ -25,6 +25,8 @@ import AddArtist from './components/AddArtistComponent';
 import IssuesList from './components/IssuesList';
 import AddCinemaComponent from './components/AddCinemaComponent';
 import AddTVStationComponent from './components/AddTVStationComponent';
+import EditArtistComponent from './components/EditArtistComponent';
+import EditArtistForm from './components/EditArtistForm';
 
 
 class App extends Component {
@@ -53,6 +55,8 @@ class App extends Component {
           <Route exact path="/showIssues" component={IssuesList} />
           <Route exact path="/addCinema" component={AddCinemaComponent} />
           <Route exact path="/addStation" component={AddTVStationComponent} />
+          <Route exact path="/editArtist" component={EditArtistComponent} />
+          <Route exact path="/editArtist/:id" component={EditArtistForm} />
 
           
 

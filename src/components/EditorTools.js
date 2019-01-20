@@ -27,6 +27,9 @@ const EditorTools = (props) => {
            <span>
             <Button size="large" component={Link} to="/addStation" variant="outlined" >Add TV Station</Button>
            </span>  
+           <span>
+            <Button size="large" component={Link} to="/editArtist" variant="outlined" >Edit Artist</Button>
+           </span> 
           </div>
       }
     </div>
