@@ -22,6 +22,21 @@ class AddCinemaComponent extends Component {
         const data = new FormData(event.target);
         console.log(data.get('name'));
         console.log(data.get('city'));
+        Axios.get(`${URL}/addCinema/${data.get('name')}/${data.get('city')}`)
+        .then(response => {
+            let success = false;
+            if( response.data === "Successful"){
+                success = true;
+                this.setState({
+                    success: true,
+                    open: true
+                })
+            }
+        })
+        .catch(err => this.setState({
+            success : false,
+            open: true
+        }))
     }
 
 
