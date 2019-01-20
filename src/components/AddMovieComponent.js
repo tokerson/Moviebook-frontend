@@ -30,7 +30,7 @@ class AddMovieComponent extends Component {
         labelWidth:0,
         chosenArtists:[],
         open: false,
-        success: false
+        success: false,
         allGenres:[]
     }
 
@@ -144,6 +144,12 @@ class AddMovieComponent extends Component {
     handleChooseArtist = (chosenArtists) => {
         this.setState({
             chosenArtists : chosenArtists
+        })
+    }
+
+    onDialogClose = () => {
+        this.setState({
+            open: false
         })
     }
 
