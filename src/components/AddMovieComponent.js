@@ -17,13 +17,6 @@ import { Dialog, DialogTitle } from '@material-ui/core';
 
 const URL = 'http://localhost:8080';
 
-// take genres from database
-const genres = [
-    'Drama',
-    'Comedy',
-    'Horror',
-    'Romance'
-  ];
 
 const styles = {
 
@@ -38,13 +31,24 @@ class AddMovieComponent extends Component {
         chosenArtists:[],
         open: false,
         success: false
+        allGenres:[]
     }
 
     componentDidMount() {
+        this.getGenres();
         this.setState({
           labelWidth: ReactDOM.findDOMNode(this.InputLabelRef).offsetWidth,
         });
       }
+
+    getGenres = () => {
+        Axios.get(`${URL}/getAllGenres`)
+            .then(response => {
+                this.setState({
+                    allGenres: response.data
+                })
+            })
+    }
 
     handleSubmit= (event)=>{
         event.preventDefault();
@@ -180,9 +184,9 @@ class AddMovieComponent extends Component {
                         id="outlined-genre-simple"
                       />
                     }>
-                        {genres.map(genre => (
-                            <MenuItem key={genre} value={genre} >
-                                {genre}
+                        {this.state.allGenres.map(genre => (
+                            <MenuItem key={genre.name} value={genre.name} >
+                                {genre.name}
                             </MenuItem>
                         ))}
                     </Select>

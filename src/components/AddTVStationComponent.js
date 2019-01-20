@@ -21,7 +21,6 @@ class AddTVStationComponent extends Component {
         event.preventDefault();
         const data = new FormData(event.target);
         console.log(data.get('name'));
-        console.log(data.get('city'));
     }
 
 
@@ -35,14 +34,13 @@ class AddTVStationComponent extends Component {
         return(
             <div>
                 <Dialog open={this.state.open} onClose={this.onDialogClose}> 
-                { this.state.success ? <DialogTitle>You successfuly added new cinema</DialogTitle> : <DialogTitle>Operation Unsuccessful</DialogTitle>}
+                { this.state.success ? <DialogTitle>You successfuly added new station</DialogTitle> : <DialogTitle>Operation Unsuccessful</DialogTitle>}
                 </Dialog>
                
                 <form onSubmit={this.handleSubmit} className="movieForm" style={{margin:"auto"}}>
-                    <TextField type="text" id="name" name="name" label="Cinema Name" variant="outlined"  margin="dense"></TextField>
-                    <TextField type="text" id="city" name="city" label="City" variant="outlined" margin="dense"></TextField>
+                    <TextField type="text" id="name" name="name" label="TV Station Name" variant="outlined"  margin="dense"></TextField>
                     
-                    <Button variant="outlined"type="submit" margin="dense">Add Cinema</Button>
+                    <Button variant="outlined"type="submit" margin="dense">Add TV Station</Button>
                 </form>
             </div>
         );

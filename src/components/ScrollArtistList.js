@@ -13,11 +13,6 @@ import MenuItem from '@material-ui/core/MenuItem';
 import '../css/ScrollListItem.css'
 const URL = 'http://localhost:8080';
 
-const artistType = [
-    'Actor',
-    'Director',
-    'Writer'
-]
 
 class ScrollAristList extends Component {
 
@@ -30,10 +25,12 @@ class ScrollAristList extends Component {
             searching : false,
             chosenActors : [],
             roles: [],
-            artistTypes : []
-
+            artistTypes : [],
+            allArtistTypes: []
         }
     }
+
+
 
     filterArtists = (event) => {
         let filtered = this.state.artists.filter(item => {
@@ -49,8 +46,17 @@ class ScrollAristList extends Component {
     
     }
 
+    getAllArtistTypes = () => {
+        axios.get(`${URL}/getAllArtistTypes`).then(response => {
+            this.setState({
+                allArtistTypes: response.data
+            })
+        })
+    }
+
     componentWillMount(){
         this.getArtists();
+        this.getAllArtistTypes();
     }
 
 
@@ -168,7 +174,7 @@ class ScrollAristList extends Component {
                                     id="outlined-types-simple"
                                 />
                             }>
-                                {artistType.map(type => (
+                                {this.state.allArtistTypes.map(type => (
                                     <MenuItem key={type} value={type} >
                                         {type}
                                     </MenuItem>
