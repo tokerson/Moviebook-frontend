@@ -2,27 +2,46 @@ import React , { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { movieListAll } from '../actions';
-
+import axios from 'axios';
 import MovieList from "../components/MovieList"
 import TextField from '@material-ui/core/TextField';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+import MenuItem from '@material-ui/core/MenuItem';
+import InputLabel from '@material-ui/core/InputLabel';
+
 
 import "../css/MovieList.css"
+
+const URL = 'http://localhost:8080';
+
+const genres =[
+  'Drama',
+  'Romance',
+  'Action',
+  'Comedy',
+  'Adventure'
+]
 
 class MovieListContainer extends Component {
 
   //this function filters json, looking for a title corresponding to given word
   
   componentWillMount() {
-    this.props.movieListAll();
+    this.props.movieListAll().then( () => {this.setState({
+      movies:this.props.movies.movieList
+    })});
   }
 
   state = {
+    movies:[],
     filtered : [],
-    searching : false
+    searching : false,
+    genre:""
   }
 
   filterMovies = (event) => {
-    let filtered = this.props.movies.movieList.filter(item => {
+    let filtered = this.state.movies.filter(item => {
       //toUpperCase, so user doesn't have to bother about Upper or Lower case sensitive titles.
       return item.title.toUpperCase().indexOf(event.target.value.toUpperCase()) > -1;
     });
@@ -34,17 +53,49 @@ class MovieListContainer extends Component {
 
   }
 
+  showMoviesOfGenre = (event) => {
+
+    this.setState({
+      genre: event.target.value
+    })
+    console.log(event.target.value)
+    if(event.target.value !== "None"){
+      axios.get(`${URL}/allMoviesOfTheGenre/${event.target.value}`)
+          .then( response => {
+            this.setState({
+              movies: response.data
+            })
+          }).catch (err => console.log(err))
+    }
+    else this.props.movieListAll().then( () => {this.setState({
+      movies:this.props.movies.movieList,
+      filtered : [],
+      searching : false,
+      genre:""
+    })});
+  }
 
   render() {
     //we want to display either whole list of movies or filtered list depending on the users input  
-    let movies = this.state.filtered.length === 0 ? this.props.movies.movieList : this.state.filtered;
+    let movies = this.state.filtered.length === 0 ? this.state.movies : this.state.filtered;
     if(this.state.filtered.length === 0 && this.state.searching === true) {
       movies = []
     }
     
     return (
       <div>
-          <TextField id="outlined-search" label="Search" margin="normal" varian="outlined" onChange={this.filterMovies}></TextField>
+          <TextField id="outlined-search" style={{ verticalAlign: "baseline"}} label="Search" margin="normal" varian="outlined" onChange={this.filterMovies}></TextField>
+          <FormControl margin="dense" style={{minWidth:"80px", marginLeft:"5px", verticalAlign: "baseline"}}>
+            <InputLabel htmlFor="age-simple">Genre</InputLabel>
+            <Select value={this.state.genre} onChange={this.showMoviesOfGenre} label="Genre" id="genre" name="genre" >
+              <MenuItem value="None">None</MenuItem>
+              {genres.map(genre => (
+                <MenuItem key={genre} value={genre} >
+                  {genre}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>  
           <MovieList className="list" movies={movies}/>          
       </div>
     );

@@ -3,7 +3,7 @@ import { Dialog, DialogTitle, DialogContent } from '@material-ui/core';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-
+import axios from 'axios';
 const URL = 'http://localhost:8080';
 
 
@@ -15,6 +15,15 @@ class IssueDialog extends Component {
         this.state = {
             issue: ""
         }
+    }
+
+    sendIssue = () => {
+        axios.post(`${URL}/addIssue/${this.props.idMovie}/${this.props.username}/${this.state.issue}`)
+             .then( response => {
+                 if( response.data === "Successful") {
+                     this.props.onClose();
+                 }
+             })
     }
     render(){
         return(

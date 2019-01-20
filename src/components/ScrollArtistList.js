@@ -123,7 +123,7 @@ class ScrollAristList extends Component {
     }
 
     render(){
-
+        
         let artistList = this.state.filtered.length === 0 ? this.state.artists : this.state.filtered;
         if(this.state.filtered.length === 0 && this.state.searching === true) {
           artistList = []

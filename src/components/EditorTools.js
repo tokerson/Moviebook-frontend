@@ -11,9 +11,16 @@ const EditorTools = (props) => {
       {
         login.status !== "Administrator" && login.status !== "Editor"
         ? <Redirect to="/home"/>
-        : <div>
-           <Button size="large" component={Link} to="/addMovie" variant="outlined" >Add Movie</Button>
-           <Button size="large" component={Link} to="/addArtist" variant="outlined" >Add Artist</Button>
+        : <div style={{display:"flex", flexDirection:"column", alignItems:"flexStart"}}>
+           <span>
+            <Button size="large" component={Link} to="/addMovie" variant="outlined" >Add Movie</Button>
+           </span>
+           <span>
+            <Button size="large" component={Link} to="/showIssues" variant="outlined" >Show Issues</Button>
+           </span> 
+           <span>
+            <Button size="large" component={Link} to="/addArtist" variant="outlined" >Add Artist</Button>
+           </span> 
           </div>
       }
     </div>

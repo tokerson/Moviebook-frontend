@@ -26,6 +26,7 @@ class ReviewForm extends Component {
             this.setState({
                 review: ""
             });
+            this.props.callback();
         })
         .catch(err => console.log(err));
         
