@@ -154,7 +154,7 @@ class MovieContainer extends Component {
                     <div className="movieDetails">
                         <div className="rating">
                             <h2 className="movie-title" >{data.movieDetail.title} </h2>
-                            <h3><MdStar/>{data.movieDetail.rating.toFixed(1) || 0} / 10 </h3>
+                            <h3><MdStar/>{data.movieDetail.rating ? data.movieDetail.rating.toFixed(1) : 0} / 10 </h3>
                             { logged ?
                             <div>
                                 <FormControl margin="dense" style={{ width: "50px", marginLeft:"5px" }}>

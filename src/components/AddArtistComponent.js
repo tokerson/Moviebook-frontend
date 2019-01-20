@@ -8,6 +8,7 @@ import Axios from 'axios';
 import { Dialog, DialogTitle } from '@material-ui/core';
 
 
+
 const URL = 'http://localhost:8080';
 
 class AddArtistComponent extends Component {
@@ -38,11 +39,11 @@ class AddArtistComponent extends Component {
             let success = false;
             if( response.data === "Successful"){
                 success = true;
+                this.setState({
+                    success: true,
+                    open: true
+                })
             }
-            this.setState({
-                success: true,
-                open: true
-            })
         })
         .catch(err => this.setState({
             success : false,
