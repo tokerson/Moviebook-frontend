@@ -1,0 +1,42 @@
+.issueWrapper {
+    width: 100%;
+    border: 1px solid lightgray;
+    border-radius: 2px;
+    margin: 10px 0 20px 0;
+    height: auto;
+    color: black;
+    background-color: #dfdedeb6;
+    
+}
+
+.issueWrapper:hover {
+    box-shadow: 0 0 2px 1px darkslategray;
+    transform: scale(1.02);
+    cursor: pointer;
+}
+
+.issueContent {
+    width:90%;
+    border: 1px solid lightgray;
+    border-radius: 2px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top:10px;
+    margin-bottom:20px;
+    height: auto;
+    background-color: white;
+    font-size: 23px;
+}
+
+.issueHeader {
+    display:flex;
+    flex-direction: row;
+    width:90%;
+    margin:auto;
+    margin-top:10px;
+    font-style: italic
+}
+
+.issueHeader > p {
+    margin-right:10px;
+}
