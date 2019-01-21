@@ -14,6 +14,10 @@
     border-bottom: solid 1px lightgray
 }
 
+.usertypeSelect{
+    width:140px;
+}
+
 #username {
     margin-left:20px;
     align-self: center;
@@ -23,4 +27,9 @@
     justify-content: flex-end;
     margin-right: 20px;
     margin-left:auto;
+}
+
+#deleteButton {
+    align-self: center;
+    height: 50%;
 }

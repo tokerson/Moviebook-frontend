@@ -5,11 +5,12 @@ import '../css/Users.css';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import { Redirect } from 'react-router'
-import { NavLink } from 'react-router-dom';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import InputLabel from '@material-ui/core/InputLabel';
+import { Dialog, DialogTitle } from '@material-ui/core';
+
 
 
 const URL = 'http://localhost:8080';
@@ -19,7 +20,8 @@ class UsersList extends Component {
 
     state = {
         users:[],
-        userTypes:[]
+        userTypes:[],
+        open: false
     }
 
     componentWillMount() {
@@ -28,9 +30,7 @@ class UsersList extends Component {
     }
 
     getUserTypes = () => {
-        
         axios.get(`${URL}/getAllUserTypes`).then( response => {
-            console.log(response.data)
             this.setState({
                 userTypes: response.data
             })
@@ -53,16 +53,39 @@ class UsersList extends Component {
         .catch(err => console.log(err));
     }
 
+    deleteUser = (login) => {
+        axios.post(`${URL}/removeUser/${login}`)
+             .then( response => {
+                 if(response.data ==="Successful"){
+                    this.getUsers();
+                 }
+                 else {
+                    this.setState({
+                        open:true
+                    })
+                 }
+             })
+    }
+
+    onDialogClose = () => {
+        this.setState({
+            open:false
+        })
+    }
+
     showUsers = () => {
         return(
             <div className="usersWrapper">
+                <Dialog open={this.state.open} onClose={this.onDialogClose}> 
+                    <DialogTitle>Operation Unsuccessful</DialogTitle>}
+                </Dialog>
                 {this.state.users.map( user => {
                     return <div key={user.login} className="userItem">
                     <div id="username">
                          <b>Username:</b> {user.login} 
                     </div >
                     <div id="usertype">
-                        <FormControl margin="dense" style={{ minWidth: "80px", marginLeft: "5px", verticalAlign: "baseline" }}>
+                        <FormControl className="usertypeSelect" margin="dense" style={{ minWidth: "80px", marginLeft: "5px", verticalAlign: "baseline" }}>
                             <InputLabel htmlFor="age-simple">User Type</InputLabel>
                             <Select value={user.userType} onChange={(e)=>this.changeUsersType(e,user.login)} label="Genre" id="genre" name="genre" >
                                 {this.state.userTypes.map(type => (
@@ -73,6 +96,7 @@ class UsersList extends Component {
                             </Select>
                         </FormControl>   
                     </div>
+                    <Button id="deleteButton" onClick={() => this.deleteUser(user.login)}variant="outlined" size="small">Delete user</Button>
                     </div>
                 })}
             </div>
