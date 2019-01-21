@@ -32,6 +32,8 @@ import EditMovieForm from './components/EditMovieForm';
 import UsersList from './components/UsersList';
 import AddShowComponent from './components/AddShowComponent';
 import AddTransmissionComponent from './components/AddTransmissionComponent';
+import ToWatchList from './components/ToWatchList';
+import ChangePasswordComponent from './components/ChangePasswordComponent';
 
 
 class App extends Component {
@@ -67,6 +69,8 @@ class App extends Component {
           <Route exact path="/usersList" component={UsersList} />
           <Route exact path="/addShow" component={AddShowComponent} />
           <Route exact path="/addTransmission" component={AddTransmissionComponent} />
+          <Route exact path="/watchList/:username" component={ToWatchList} />
+          <Route exact path="/changePassword/:username" component={ChangePasswordComponent} />
         </div>
       </Router>
     );

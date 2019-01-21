@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {  Redirect } from 'react-router'
-import TextField from '@material-ui/core/TextField';
 import { Button } from '@material-ui/core';
 import '../css/AddMovieForm.css';
 import Axios from 'axios';
@@ -50,7 +49,6 @@ class AddTransmissionComponent extends Component {
         if(this.state.movie !== "" && this.state.station !== "" && this.state.date !== null){
             Axios.post(`${URL}/addTvProgram/${this.state.station.value}/${this.state.date.getTime()}/${this.state.movie.value}`)
             .then(response => {
-                console.log(response.data);
                 let success = false;
                 if( response.data === "Successful"){
                     success = true;

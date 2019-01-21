@@ -54,13 +54,6 @@ class AddMovieComponent extends Component {
         event.preventDefault();
 
         const data = new FormData(event.target);
-        console.log(data.get('title'))
-        console.log(data.get('date'))
-        console.log(data.get('boxOffice'))
-        console.log(data.get('description'))
-        console.log(data.get('pictureUrl'))
-        console.log(data.get('language'))
-        console.log(data.get('genre'))
 
         try {
         let url = encodeURIComponent(data.get('pictureUrl'));

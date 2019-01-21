@@ -1,72 +1,30 @@
-import React , { Component } from 'react';
-import axios from 'axios';
-import Paper from '@material-ui/core/Paper';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import { NavLink } from 'react-router-dom'
+import React from 'react';
 
+import Button from '@material-ui/core/Button';
+import { Link } from 'react-router-dom';
 
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router';
-import MovieListItem from './MovieListItem';
 
 
 const URL = 'http://localhost:8080';
 
 
-class Account extends Component {
-    constructor(props){
-      super(props);
-      
-      this.state = {
-        filmsToWatch: []
-      }
-    }
+const Account = (props) => {
 
-    componentDidMount() {
-      this.getFilmsToWatch();
-      
-    }
-
-    getFilmsToWatch = () => {
-      axios.get(`${URL}/getFilmsToWatch/${this.props.login.login_data.username}`)
-      .then(response=>{
-        const filmsToWatch = response.data;
-        this.setState({ filmsToWatch});
-      })
-    }
-
-    render() {
-      const login = this.props.login;
-      return(
-        <div>
-          { login.status !== "" ? 
-          <div>
-            <h2>Films to watch:</h2>
-            <Paper style={{maxHeight: 500, overflow: 'auto'}}>
-                <List > 
-                  {
-                    this.state.filmsToWatch.map(movie => {
-                      return <div key={movie.idMovie}>
-                        <ListItem>
-                          <NavLink to={{
-                            pathname: '/films/'.concat(movie.idMovie + "/").concat(movie.title),
-                            }} style={{textDecoration:'none',width:"100%"}}>
-                          <MovieListItem movie={movie}/>   
-                          </NavLink>
-                        </ListItem>
-
-                      </div>
-                    })
-                  }
-                </List>
-            </Paper>
+      const login = props.login;
+      return (<div>
+        { login.status !== "" ? 
+          <div style={{display:"flex", flexDirection:"column", alignItems:"flexStart"}}>
+            <span>
+              <Button size="large" component={Link} to={"/watchList/".concat(login.login_data.username)}variant="outlined" >Show Watch List</Button>
+            </span>
+            <span>
+              <Button size="large" component={Link} to={"/changePassword/".concat(login.login_data.username)}variant="outlined" >Change Password</Button>
+            </span>
           </div>
-          : <Redirect to="/home"/>}
-        </div>
-      )
-    }
-
+          : <Redirect to="/home"/> }
+      </div>);
 
 }
 
