@@ -188,6 +188,7 @@ class MovieContainer extends Component {
                         <p><b>Music:</b> {data.movieDetail.artists.filter( item => { return item.artistType === "Music"}).map(item => { return item.name + " " + item.surname}).join(", ")}</p>
                         <p><b>Box Office:</b> {data.movieDetail.boxOffice} $</p>
                         <p><b>Production:</b> {data.movieDetail.country}</p>
+                        <p><b>Language:</b> {data.movieDetail.language}</p>
                     
                                 <p><b>Prizes:</b></p>
                                 <ul > 

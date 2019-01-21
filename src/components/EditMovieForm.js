@@ -115,13 +115,14 @@ class EditMovieForm extends Component {
         var genres = data.get('genre').replace(/,/g, "_");
 
         console.log(genres);
-        Axios.get(`${URL}/addMovie/${data.get('title')}/${data.get('language')}/${data.get('date')}/${data.get('boxOffice')}/${data.get('country')}/${data.get('description')}/${changed}/${genres}`)
+        Axios.get(`${URL}/updateMovie/${this.props.match.params.id}/${data.get('title')}/${data.get('language')}/${data.get('date')}/${data.get('boxOffice')}/${data.get('country')}/${data.get('description')}/${changed}/${genres}`)
         .then(response => {
             console.log(response.data)
             if( response.data !== -1){
                 const idMovie = response.data;
                 console.log(idMovie)
-                if(idMovie !== -1){
+                Axios.get(`${URL}/beforeUpdateArtistTypeAndAssignToFilm/${idMovie}`)
+                .then(response => {
                     console.log(this.state.chosenArtists)
                     for(var i = 0; i < this.state.chosenArtists.length; ++i) {
         
@@ -155,10 +156,11 @@ class EditMovieForm extends Component {
                         }))
         
                     }
-                }
-
-
-
+                })
+                .catch(err => this.setState({
+                    success : false,
+                    open: true
+                }))
             }
         })
         .catch(err => this.setState({
