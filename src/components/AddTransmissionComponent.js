@@ -49,9 +49,7 @@ class AddTransmissionComponent extends Component {
         if(this.state.movie !== "" && this.state.station !== "" && this.state.date !== null){
             Axios.post(`${URL}/addTvProgram/${this.state.station.value}/${this.state.date.getTime()}/${this.state.movie.value}`)
             .then(response => {
-                let success = false;
                 if( response.data === "Successful"){
-                    success = true;
                     this.setState({
                         success: true,
                         open: true

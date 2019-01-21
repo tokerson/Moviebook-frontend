@@ -25,17 +25,22 @@
 .movieDetails {
     /* display: flex;
     flex-direction: column; */
+    width:100%;
     margin-left : 10px;
     margin-right: 10px;
     
 }
 
-
 .rating {
     display: flex;
     flex-direction: row;
-    align-items: baseline;
+    align-items: center;
     margin-right: 10px;
+}
+.ratingButtonWrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 .movie-title {

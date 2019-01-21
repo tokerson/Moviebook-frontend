@@ -141,14 +141,13 @@ class EditMovieForm extends Component {
 
                         Axios.get(`${URL}/addArtistTypeAndAssignToFilm/${this.state.chosenArtists[i].id}/${role}/${connectedTypes}/${idMovie}`)
                         .then(response => {
-                            let success = false;
                             if( response.data === "Successful"){
-                                success = true;
+                                this.setState({
+                                    success: true,
+                                    open: true
+                                })
                             }
-                            this.setState({
-                                success: true,
-                                open: true
-                            })
+                            
                         })
                         .catch(err => this.setState({
                             success : false,
@@ -212,7 +211,7 @@ class EditMovieForm extends Component {
                 }} variant="outlined" value={this.state.premiere} onChange={(event)=>this.setState({premiere:event.target.value})} margin="dense"></TextField>
                 <TextField type="text" value={this.state.boxOffice} onChange={(event)=>this.setState({boxOffice:event.target.value})} id="boxOffice" name="boxOffice" label="BoxOffice" variant="outlined" margin="dense"></TextField>
                 <TextField type="text" value={this.state.description} onChange={(event)=>this.setState({description:event.target.value})} id="description" multiline={true} name="description" label="Description" variant="outlined" margin="dense"></TextField>
-                <TextField type="text" value={this.state.picture} onChange={(event)=>this.setState({picture:event.target.value})} id="pictureUrl" multiline={true} name="pictureUrl" label="URL of picture" variant="outlined" margin="dense" onChange={this.handlePictureChange}></TextField>
+                <TextField type="text" value={this.state.picture} onChange={(event)=>this.setState({picture:event.target.value})} id="pictureUrl" multiline={true} name="pictureUrl" label="URL of picture" variant="outlined" margin="dense"></TextField>
                 <TextField type="text" value={this.state.language} onChange={(event)=>this.setState({language:event.target.value})} id="language" name="language" label="Language of movie" variant="outlined" margin="dense"></TextField>
                 <TextField type="text" value={this.state.country} onChange={(event)=>this.setState({country:event.target.value})} id="country" name="country" label="Country" variant="outlined" margin="dense"></TextField>
                 <FormControl variant="outlined" classes={classes.formControl} margin="dense">

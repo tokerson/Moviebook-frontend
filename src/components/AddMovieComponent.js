@@ -94,14 +94,13 @@ class AddMovieComponent extends Component {
 
                         Axios.get(`${URL}/addArtistTypeAndAssignToFilm/${this.state.chosenArtists[i].id}/${role}/${connectedTypes}/${idMovie}`)
                         .then(response => {
-                            let success = false;
                             if( response.data === "Successful"){
-                                success = true;
+                                this.setState({
+                                    success: true,
+                                    open: true
+                                })
                             }
-                            this.setState({
-                                success: true,
-                                open: true
-                            })
+                            
                         })
                         .catch(err => this.setState({
                             success : false,

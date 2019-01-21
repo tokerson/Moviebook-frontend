@@ -18,6 +18,7 @@ import IssueDialog from '../components/IssueDialog'
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
+import OutlinedInput from '@material-ui/core/OutlinedInput';
 
 
 
@@ -156,9 +157,15 @@ class MovieContainer extends Component {
                             <h2 className="movie-title" >{data.movieDetail.title} </h2>
                             <h3><MdStar/>{data.movieDetail.rating ? data.movieDetail.rating.toFixed(1) : 0} / 10 </h3>
                             { logged ?
-                            <div>
-                                <FormControl margin="dense" style={{ width: "50px", marginLeft:"5px" }}>
-                                    <Select  value={this.state.rate} onChange={this.changeRate} label="Type" id="type" name="type" >
+                            <div className="ratingButtonWrapper">
+                                <FormControl variant="outlined" margin="dense" style={{ width: "70px", marginLeft:"5px",alignSelf:"baseline"}}>
+                                    <Select value={this.state.rate} onChange={this.changeRate} label="Type" id="type" name="type" input={
+                                        <OutlinedInput
+                                        labelWidth={0}
+                                        name="genre"
+                                        id="outlined-genre-simple"
+                                    />
+                                    }>
                                         {rates.map(type => (
                                             <MenuItem key={type} value={type} >
                                                 {type}
@@ -167,7 +174,7 @@ class MovieContainer extends Component {
                                     </Select>
                                 </FormControl>    
                                 {this.state.rate > 0 ?
-                                <Button variant="outlined" onClick={this.handleRateMovie} styles={{marginBottom:"10px", backgroundColor:"white", border:"black"}}>Rate!</Button> 
+                                <Button variant="outlined" size="small" onClick={this.handleRateMovie} >Rate!</Button> 
                                 :null}
                             </div>
                             : null}           

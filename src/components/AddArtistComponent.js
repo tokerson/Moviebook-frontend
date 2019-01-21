@@ -36,9 +36,7 @@ class AddArtistComponent extends Component {
         
         Axios.get(`${URL}/updateArtist/-1/${data.get('name')}/${data.get('surname')}/${data.get('origin')}/${data.get('date')}/${changed}`)
         .then(response => {
-            let success = false;
             if( response.data === "Successful"){
-                success = true;
                 this.setState({
                     success: true,
                     open: true

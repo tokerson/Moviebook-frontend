@@ -23,9 +23,7 @@ class AddTVStationComponent extends Component {
         console.log(data.get('name'));
         Axios.get(`${URL}/addStation/${data.get('name')}`)
         .then(response => {
-            let success = false;
             if( response.data === "Successful"){
-                success = true;
                 this.setState({
                     success: true,
                     open: true

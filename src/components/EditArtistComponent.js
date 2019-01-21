@@ -2,10 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {  Redirect } from 'react-router'
 import TextField from '@material-ui/core/TextField';
-import { Button } from '@material-ui/core';
 import '../css/AddMovieForm.css';
 import axios from 'axios';
-import { Dialog, DialogTitle } from '@material-ui/core';
 import ArtistListItem from './ArtistListItem'
 import { NavLink } from 'react-router-dom'
 
@@ -67,9 +65,14 @@ class EditArtistComponent extends Component {
             ) 
         });
         return(
-            <div >
-                <TextField id="outlined-search" label="Search" margin="normal" varian="outlined" onChange={this.filterArtists}></TextField>
-                {artists}
+            <div>
+                { this.props.login.status !== "Administrator" && this.props.login.status !== "Editor"
+                    ? <Redirect to="/home"/> :
+                    <div >
+                        <TextField id="outlined-search" label="Search" margin="normal" varian="outlined" onChange={this.filterArtists}></TextField>
+                        {artists}
+                    </div> 
+                }
             </div>
         )
     }

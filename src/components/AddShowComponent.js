@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {  Redirect } from 'react-router'
-import TextField from '@material-ui/core/TextField';
 import { Button } from '@material-ui/core';
 import '../css/AddMovieForm.css';
 import Axios from 'axios';
@@ -51,9 +50,7 @@ class AddShowComponent extends Component {
         if(this.state.movie !== "" && this.state.cinema !== "" && this.state.date !== null){
             Axios.post(`${URL}/addShow/${this.state.date.getTime()}/${this.state.cinema.value}/${this.state.movie.value}`)
             .then(response => {
-                let success = false;
                 if( response.data === "Successful"){
-                    success = true;
                     this.setState({
                         success: true,
                         open: true
@@ -88,13 +85,10 @@ class AddShowComponent extends Component {
     }
 
     formRender = () => {
-        console.log(this.state.movie)
-        console.log(this.state.cinema)
-        console.log(this.state.date.getTime())
         return(
             <div>
                 <Dialog open={this.state.open} onClose={this.onDialogClose}> 
-                { this.state.success ? <DialogTitle>You successfuly added new show</DialogTitle> : <DialogTitle>Operation Unsuccessful</DialogTitle>}
+                    { this.state.success ? <DialogTitle>You successfuly added new show</DialogTitle> : <DialogTitle>Operation Unsuccessful</DialogTitle>}
                 </Dialog>
                
                 <form onSubmit={this.handleSubmit} className="movieForm" style={{margin:"auto"}}>
