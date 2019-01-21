@@ -30,6 +30,7 @@ import EditArtistForm from './components/EditArtistForm';
 import EditMovieComponent from './components/EditMovieComponent';
 import EditMovieForm from './components/EditMovieForm';
 import UsersList from './components/UsersList';
+import AddShowComponent from './components/AddShowComponent';
 
 
 class App extends Component {
@@ -63,6 +64,7 @@ class App extends Component {
           <Route exact path="/editMovie" component={EditMovieComponent} />
           <Route exact path="/editMovie/:id" component={EditMovieForm} />
           <Route exact path="/usersList" component={UsersList} />
+          <Route exact path="/addShow" component={AddShowComponent} />
           
 
         </div>

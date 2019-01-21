@@ -91,7 +91,9 @@ class MovieListContainer extends Component {
           <FormControl margin="dense" style={{minWidth:"80px", marginLeft:"5px", verticalAlign: "baseline"}}>
             <InputLabel htmlFor="age-simple">Genre</InputLabel>
             <Select value={this.state.genre} onChange={this.showMoviesOfGenre} label="Genre" id="genre" name="genre" >
-              <MenuItem value="None">None</MenuItem>
+              <MenuItem value="None">
+                None
+              </MenuItem>
               {this.state.genres.map(genre => (
                 <MenuItem key={genre.name} value={genre.name} >
                   {genre.name}
