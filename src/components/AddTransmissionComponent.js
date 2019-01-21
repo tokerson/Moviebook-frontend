@@ -9,24 +9,23 @@ import { Dialog, DialogTitle } from '@material-ui/core';
 import DateTimePicker from 'react-datetime-picker'
 import Select from 'react-select';
 
-
 const URL = 'http://localhost:8080';
 
-class AddShowComponent extends Component {
+class AddTransmissionComponent extends Component {
 
     state={
         open: false,
         success: false,
         date: new Date(),
         movie:"",
-        cinemas:[],
+        stations:[],
         movieTitles:[],
-        cinema:""
+        station:""
     }
 
     componentWillMount(){
         this.getMovies();
-        this.getCinema();
+        this.getStations();
     }
 
     getMovies = () => {
@@ -38,19 +37,20 @@ class AddShowComponent extends Component {
         })
     }
 
-    getCinema = () => {
-        Axios.get(`${URL}/allCinemas`).then( response => {
-            let cinemas = response.data.map( cinema => {
-                return { label: cinema.idCinema+". " + cinema.name + " in "+ cinema.city, value: cinema.idCinema}
+    getStations = () => {
+        Axios.get(`${URL}/allStations`).then( response => {
+            let stations = response.data.map( station => {
+                return { label: station.name, value: station.name}
             })
-            this.setState({cinemas : cinemas})
+            this.setState({stations: stations})
         })
     }
 
     handleSubmit = (event) => {
-        if(this.state.movie !== "" && this.state.cinema !== "" && this.state.date !== null){
-            Axios.post(`${URL}/addShow/${this.state.date.getTime()}/${this.state.cinema.value}/${this.state.movie.value}`)
+        if(this.state.movie !== "" && this.state.station !== "" && this.state.date !== null){
+            Axios.post(`${URL}/addTvProgram/${this.state.station.value}/${this.state.date.getTime()}/${this.state.movie.value}`)
             .then(response => {
+                console.log(response.data);
                 let success = false;
                 if( response.data === "Successful"){
                     success = true;
@@ -74,9 +74,9 @@ class AddShowComponent extends Component {
         })
     }
 
-    handleSelectCinema = (selectedOption) => {
+    handleSelectStation = (selectedOption) => {
         this.setState({
-            cinema: selectedOption,
+            station: selectedOption,
         })
     }
 
@@ -88,13 +88,11 @@ class AddShowComponent extends Component {
     }
 
     formRender = () => {
-        console.log(this.state.movie)
-        console.log(this.state.cinema)
-        console.log(this.state.date.getTime())
+
         return(
             <div>
                 <Dialog open={this.state.open} onClose={this.onDialogClose}> 
-                { this.state.success ? <DialogTitle>You successfuly added new show</DialogTitle> : <DialogTitle>Operation Unsuccessful</DialogTitle>}
+                { this.state.success ? <DialogTitle>You successfuly added new transmission</DialogTitle> : <DialogTitle>Operation Unsuccessful</DialogTitle>}
                 </Dialog>
                
                 <form onSubmit={this.handleSubmit} className="movieForm" style={{margin:"auto"}}>
@@ -102,12 +100,12 @@ class AddShowComponent extends Component {
                         <Select options={this.state.movieTitles} value={this.state.movie} onChange={this.handleSelectMovie}placeholder="Select movie" />
                     </div>
                     <div style={{marginTop:"10px", marginBottom:"10px"}}>
-                        <Select options={this.state.cinemas} value={this.state.cinema} onChange={this.handleSelectCinema}placeholder="Select cinema" />
+                        <Select options={this.state.stations} value={this.state.station} onChange={this.handleSelectStation}placeholder="Select TV Station" />
                     </div>
                     <div style={{marginTop:"10px", marginBottom:"10px"}}>
                         <DateTimePicker disableClock={true} showNavigation={false} onChange={(date)=>this.setState({date})} value={this.state.date}/>
                     </div>
-                    <Button variant="outlined"type="submit" margin="dense">Add Show</Button>
+                    <Button variant="outlined"type="submit" margin="dense">Add Transmission</Button>
                 </form>
             </div>
         );
@@ -131,4 +129,4 @@ const mapStateToProps = (state) => {
         login: state.login
     }
 }
-export default connect(mapStateToProps)(AddShowComponent);
+export default connect(mapStateToProps)(AddTransmissionComponent);
