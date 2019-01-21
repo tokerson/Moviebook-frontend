@@ -144,8 +144,6 @@ class ScrollAristList extends Component {
 
     render(){
         
-        console.log(this.props.chosenActors)
-        console.log(this.state.chosenActors)
         let artistList = this.state.filtered.length === 0 ? this.state.artists : this.state.filtered;
         if(this.state.filtered.length === 0 && this.state.searching === true) {
           artistList = []

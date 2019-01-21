@@ -37,19 +37,21 @@ class ChangePasswordComponent extends Component {
             return;
         }
 
-        axios.get(`${URL}/changePassword/${this.props.login.login_data.username}/${data.get('newpass')}/${data.get('oldpass')}`)
+        axios.get(`${URL}/changePassword/${this.props.login.login_data.username}/${data.get('oldpass')}/${data.get('newpass')}`)
         .then(response => {
-            let success = false;
-            let wrongOld = true;
             if( response.data === "Successful"){
-                success = true;
-                wrongOld= false;
+                this.setState({
+                    wrongOld: false,
+                    success: true,
+                    open: true
+                })
             }
-            this.setState({
-                wrongOld: wrongOld,
-                success: success,
-                open: true
-            })
+            else {
+                this.setState({
+                    wrongOld: true,
+                    success: false,
+                    open: true
+                })}
         })
         .catch(err => this.setState({
             success : false,

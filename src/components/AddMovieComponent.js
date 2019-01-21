@@ -147,7 +147,6 @@ class AddMovieComponent extends Component {
     }
 
     formRender = () => {
-        console.log(this.state.chosenArtists)
         const { classes } = this.props;
         return <div className="pictureWithForm">
                 <Dialog open={this.state.open} onClose={this.onDialogClose}> 
