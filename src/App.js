@@ -34,6 +34,7 @@ import AddShowComponent from './components/AddShowComponent';
 import AddTransmissionComponent from './components/AddTransmissionComponent';
 import ToWatchList from './components/ToWatchList';
 import ChangePasswordComponent from './components/ChangePasswordComponent';
+import StatisticsComponent from './components/StatisticsComponent';
 
 
 class App extends Component {
@@ -50,7 +51,6 @@ class App extends Component {
           <Route exact path="/films" component={MovieListContainer} />
           <Route exact path="/account" component={Account} />
           <Route exact path="/adminTools" component={AdminTools} />
-          <Route exact path="/salesmanTools" component={SalesmanTools} />
           <Route exact path="/editorTools" component={EditorTools} />
           <Route exact path="/cinemas" component={CinemaList} />
           <Route exact path="/cinemas/:id" component={FilmCinema} />
@@ -71,6 +71,8 @@ class App extends Component {
           <Route exact path="/addTransmission" component={AddTransmissionComponent} />
           <Route exact path="/watchList/:username" component={ToWatchList} />
           <Route exact path="/changePassword/:username" component={ChangePasswordComponent} />
+          <Route exact path="/salesmanTools" component={SalesmanTools} />
+          <Route exact path="/showStatistics" component={StatisticsComponent} />
         </div>
       </Router>
     );

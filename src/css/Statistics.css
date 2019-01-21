@@ -1,0 +1,11 @@
+.statsWrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.formWrapper {
+    display: flex;
+    flex-direction: column;
+    margin:auto;
+    width:60%
+}
