@@ -14,7 +14,7 @@ const ReviewList = (props) => {
 
                   <p><FaThumbsUp id="like"/>    {review.amountOfLikes}</p>
                 </div>
-                {props.status === "Administrator" || props.status === "Editor" ?
+                {props.status === "Administrator" || props.status === "Editor" || props.username === review.login ?
                   <Button size="small" onClick={ () => props.removeReview(review.idReview)} >Delete review</Button> : null 
                 }
             </div>

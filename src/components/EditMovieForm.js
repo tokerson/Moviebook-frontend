@@ -199,7 +199,7 @@ class EditMovieForm extends Component {
         const { classes } = this.props;
         return <div className="pictureWithForm">
                 <Dialog open={this.state.open} onClose={this.onDialogClose}> 
-                    { this.state.success ? <DialogTitle>You successfuly added new movie</DialogTitle> : <DialogTitle>Operation Unsuccessful</DialogTitle>}
+                    { this.state.success ? <DialogTitle>You successfuly edited this movie</DialogTitle> : <DialogTitle>Operation Unsuccessful</DialogTitle>}
                 </Dialog>
             <div className="pictureWrapper">
                 <img className="picture" src={this.state.picture} alt=""></img>
@@ -240,7 +240,7 @@ class EditMovieForm extends Component {
                 </FormControl>
 
                 <ScrollArtistList chosenActors={this.state.chosenArtists} callback={this.handleChooseArtist}/>
-                <Button variant="outlined"type="submit" margin="dense">Add movie</Button>
+                <Button variant="outlined"type="submit" margin="dense">Edit movie</Button>
                 
                 
             </form>

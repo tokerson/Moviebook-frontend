@@ -27,21 +27,14 @@ class UsersList extends Component {
         this.getUserTypes();
     }
 
-    changeUsersType = (id)=>{
-        axios.post(`${URL}/removeIssue/${id}`).then( response =>{
-            this.getUsers();
-        }).catch(err => console.log(err));
-    }
-
     getUserTypes = () => {
-        this.setState({
-            userTypes:["Administrator", "Editor", "Salesman", "User"]
+        
+        axios.get(`${URL}/getAllUserTypes`).then( response => {
+            console.log(response.data)
+            this.setState({
+                userTypes: response.data
+            })
         })
-        // axios.get(`${URL}/getAllUsers`).then( response => {
-        //     this.setState({
-        //         users: response.data
-        //     })
-        // })
     }
 
     changeUsersType = (event, login) => {
