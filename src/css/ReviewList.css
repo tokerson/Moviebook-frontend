@@ -17,6 +17,12 @@
     border-bottom: inset darkgray;
 }
 
+.reviewItemStatistics{
+    margin-left: 10px;
+    margin-right: 10px;
+    border-bottom: inset darkgray;
+}
+
 #like:hover{
     transform: scale(1.3);
     cursor: pointer;
