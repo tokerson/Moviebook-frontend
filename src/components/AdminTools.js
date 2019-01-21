@@ -1,6 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router'
+import Button from '@material-ui/core/Button';
+import { Link } from 'react-router-dom';
+
 
 const AdminTools = (props) => {
   const login = props.login;
@@ -9,10 +12,11 @@ const AdminTools = (props) => {
       {
         login.status !== "Administrator"
         ? <Redirect to="/home"/>
-        : <div>
-          <h1>Admin Tools</h1>
-           {/* <Button size="large" component={Link} to="/addMovie" variant="outlined" >Add Movie</Button> */}
-          </div>
+        : <div style={{display:"flex", flexDirection:"column", alignItems:"flexStart"}}>
+          <span>
+          <Button size="large" component={Link} to="/usersList" variant="outlined" >Modfiy users</Button>
+          </span>
+       </div>
       }
     </div>
   );

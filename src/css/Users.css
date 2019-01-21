@@ -1,0 +1,26 @@
+.usersWrapper {
+    width: 60%;
+    border: 1px solid lightgray;
+    border-radius: 2px;
+    margin: auto;
+    height: auto;
+    color: black;
+    background-color: #dfdedeb6;
+}
+
+.userItem{
+    display: flex;
+    flex-direction: row;
+    border-bottom: solid 1px lightgray
+}
+
+#username {
+    margin-left:20px;
+    align-self: center;
+}
+
+#usertype {
+    justify-content: flex-end;
+    margin-right: 20px;
+    margin-left:auto;
+}
