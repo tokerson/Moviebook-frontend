@@ -35,6 +35,7 @@ import AddTransmissionComponent from './components/AddTransmissionComponent';
 import ToWatchList from './components/ToWatchList';
 import ChangePasswordComponent from './components/ChangePasswordComponent';
 import StatisticsComponent from './components/StatisticsComponent';
+import AddPrizeForm from './components/AddPrizeForm';
 
 
 class App extends Component {
@@ -73,6 +74,7 @@ class App extends Component {
           <Route exact path="/changePassword/:username" component={ChangePasswordComponent} />
           <Route exact path="/salesmanTools" component={SalesmanTools} />
           <Route exact path="/showStatistics" component={StatisticsComponent} />
+          <Route exact path="/addPrize" component={AddPrizeForm} />
         </div>
       </Router>
     );
