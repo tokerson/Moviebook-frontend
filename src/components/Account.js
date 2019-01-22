@@ -8,6 +8,8 @@ import { Redirect } from 'react-router';
 import { Dialog, DialogTitle } from '@material-ui/core';
 import { bindActionCreators } from 'redux';
 import { clickLogout } from '../actions';
+import '../css/ToolsButtons.css';
+
 
 const URL = 'http://localhost:8080';
 
@@ -41,7 +43,7 @@ class Account extends Component {
         return (
           <div>
           { login.status !== ""  ? 
-            <div style={{display:"flex", flexDirection:"column", alignItems:"flexStart"}}>
+            <div className="buttonsWrapper">
               <Dialog open={this.state.open} onClose={()=> this.setState({open:false})} > 
                 <DialogTitle>Are you sure you want to leave us ?</DialogTitle>
                 <div style={{margin:"auto"}}>
@@ -55,15 +57,9 @@ class Account extends Component {
                 }} > 
                 <DialogTitle>Thanks for being with us and feel <br></br>welcomed to come back any moment</DialogTitle>
               </Dialog>
-              <span>
-                <Button size="large" component={Link} to={"/watchList/".concat(login.login_data.username)}variant="outlined" >Show Watch List</Button>
-              </span>
-              <span>
-                <Button size="large" component={Link} to={"/changePassword/".concat(login.login_data.username)}variant="outlined" >Change Password</Button>
-              </span>
-              <span>
-                <Button size="large" variant="outlined" onClick={()=>this.setState({open:true})}><b>Delete account</b></Button>
-              </span>
+                <Button style={{marginBottom:"5px"}} size="large" component={Link} to={"/watchList/".concat(login.login_data.username)}variant="outlined" >Show Watch List</Button>
+                <Button style={{marginBottom:"5px"}} size="large" component={Link} to={"/changePassword/".concat(login.login_data.username)}variant="outlined" >Change Password</Button>
+                <Button style={{marginBottom:"5px"}} size="large" variant="outlined" onClick={()=>this.setState({open:true})}><b>Delete account</b></Button>
             </div>
             : <Redirect to="/home"/> }
         </div>);

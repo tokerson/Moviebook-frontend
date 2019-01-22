@@ -174,7 +174,7 @@ class MovieContainer extends Component {
                                     </Select>
                                 </FormControl>    
                                 {this.state.rate > 0 ?
-                                <Button variant="outlined" size="small" onClick={this.handleRateMovie} >Rate!</Button> 
+                                <Button size="small" onClick={this.handleRateMovie} >Rate!</Button> 
                                 :null}
                             </div>
                             : null}           
