@@ -41,7 +41,7 @@ class AddPrizeComponent extends Component {
     getArtists = () => {
         Axios.get(`${URL}/allArtists`).then( response => {
             let artists = response.data.map( artist => {
-                return { label: artist.id +". " + artist.name + " in "+ artist.surname, value: artist.id}
+                return { label: artist.id +". " + artist.name + " "+ artist.surname, value: artist.id}
             })
             this.setState({artists: artists})
         })
