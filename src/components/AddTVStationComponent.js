@@ -20,7 +20,6 @@ class AddTVStationComponent extends Component {
     handleSubmit = (event) => {
         event.preventDefault();
         const data = new FormData(event.target);
-        console.log(data.get('name'));
         Axios.get(`${URL}/addStation/${data.get('name')}`)
         .then(response => {
             if( response.data === "Successful"){

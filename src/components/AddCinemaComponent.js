@@ -20,8 +20,6 @@ class AddCinemaComponent extends Component {
     handleSubmit = (event) => {
         event.preventDefault();
         const data = new FormData(event.target);
-        console.log(data.get('name'));
-        console.log(data.get('city'));
         Axios.get(`${URL}/addCinema/${data.get('name')}/${data.get('city')}`)
         .then(response => {
             if( response.data === "Successful"){

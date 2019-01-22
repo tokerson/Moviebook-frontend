@@ -61,7 +61,6 @@ class MovieListContainer extends Component {
     this.setState({
       genre: event.target.value
     })
-    console.log(event.target.value)
     if(event.target.value !== "None"){
       axios.get(`${URL}/allMoviesOfTheGenre/${event.target.value}`)
           .then( response => {

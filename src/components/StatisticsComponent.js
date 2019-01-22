@@ -1,16 +1,11 @@
 import React , { Component } from 'react';
 import axios from 'axios';
-import Paper from '@material-ui/core/Paper';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import { NavLink } from 'react-router-dom'
 import '../css/Statistics.css'
 
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router';
-import MovieListItem from './MovieListItem';
 import ReactChartkick, { ColumnChart } from 'react-chartkick'
 import Chart from 'chart.js'
 

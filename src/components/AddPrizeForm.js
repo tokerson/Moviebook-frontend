@@ -5,7 +5,6 @@ import { Button } from '@material-ui/core';
 import '../css/AddMovieForm.css';
 import Axios from 'axios';
 import { Dialog, DialogTitle } from '@material-ui/core';
-import DateTimePicker from 'react-datetime-picker'
 import Select from 'react-select';
 import TextField from '@material-ui/core/TextField';
 

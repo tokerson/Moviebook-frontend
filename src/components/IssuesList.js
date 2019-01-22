@@ -28,7 +28,6 @@ class IssuesList extends Component {
     }
 
     showIssues = () => {
-        console.log(this.state.issues)
         return(
             <div >
                 

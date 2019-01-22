@@ -73,7 +73,6 @@ class EditMovieForm extends Component {
                 genres:response.data.genres,
                 chosenArtists: chosenArtists
             });
-            console.log(this.state.chosenArtists)
         })
     }
     componentWillMount() {
@@ -114,16 +113,12 @@ class EditMovieForm extends Component {
 
         var genres = data.get('genre').replace(/,/g, "_");
 
-        console.log(genres);
         Axios.get(`${URL}/updateMovie/${this.props.match.params.id}/${data.get('title')}/${data.get('language')}/${data.get('date')}/${data.get('boxOffice')}/${data.get('country')}/${data.get('description')}/${changed}/${genres}`)
         .then(response => {
-            console.log(response.data)
             if( response.data !== -1){
                 const idMovie = response.data;
-                console.log(idMovie)
                 Axios.get(`${URL}/beforeUpdateArtistTypeAndAssignToFilm/${idMovie}`)
                 .then(response => {
-                    console.log(this.state.chosenArtists)
                     for(var i = 0; i < this.state.chosenArtists.length; ++i) {
         
                         var types = this.state.chosenArtists[i].types;
@@ -194,7 +189,6 @@ class EditMovieForm extends Component {
     }
 
     formRender = () => {
-        console.log(this.state.chosenArtists)
         const { classes } = this.props;
         return <div className="pictureWithForm">
                 <Dialog open={this.state.open} onClose={this.onDialogClose}> 
