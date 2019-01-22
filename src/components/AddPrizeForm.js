@@ -55,7 +55,7 @@ class AddPrizeComponent extends Component {
         const movie = this.state.movie.value !== undefined ? this.state.movie.value : "null";
         const artist = this.state.artist.value !== undefined ? this.state.artist.value : "null";
 
-            Axios.post(`${URL}/addPrize/${data.get('prizename')}/${data.get('whatfor')}/${this.state.date.getTime()}/${artist}/${movie}`)
+            Axios.post(`${URL}/addPrize/${data.get('prizename')}/${data.get('whatfor')}/${data.get('date').substring(0,4)}/${artist}/${movie}`)
             .then(response => {
                 if( response.data === "Successful"){
                     this.setState({
