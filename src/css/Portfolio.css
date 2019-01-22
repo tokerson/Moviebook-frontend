@@ -1,0 +1,38 @@
+.portfolioItemWrapper {
+    height:50%;
+    width: 50%;
+    text-align: center;
+    background-color: #dfdedeb6;
+    border: 1px solid lightgray;
+    border-radius: 2px;
+}
+
+.portfolioItem {
+    display:flex;
+    flex-direction: column;
+}
+
+.portraitWrapper {
+    height:250px;
+    width:250px;
+    margin:auto;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+.portrait {
+    height:100%;
+    width:auto;
+}
+
+.portfolioTable {
+    width: 700px;
+    height: 700px;
+    margin:auto;
+}
+
+.norbs {
+    height:100%;
+    width:auto;
+    margin-left:-50px;
+}
